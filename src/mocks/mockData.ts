@@ -57,10 +57,10 @@ const PlacesToVisitScreenMockData = [
 ];
 
 const AgendaMock = [
-  {title: 'Day- 1'},
-  {title: 'Day- 2'},
-  {title: 'Day- 3'},
-  {title: 'Day- 4'},
+  {title: 'Day- 1', date: '21-02-2023'},
+  {title: 'Day- 2', date: '22-02-2023'},
+  {title: 'Day- 3', date: '23-02-2023'},
+  {title: 'Day- 4', date: '24-02-2023'},
 ];
 
 const ActivityMock = [

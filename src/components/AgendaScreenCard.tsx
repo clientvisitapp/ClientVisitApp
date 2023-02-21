@@ -15,12 +15,15 @@ import {ActivityMock} from '../mocks/mockData';
 import ActivityCard from './ActivityCard';
 
 type AgendaProps = {
-  title: string;
+  item: {title: string; date: string};
+  shouldExpand: boolean;
 };
 
-const AgendaScreenCard: React.FC<AgendaProps> = ({title}) => {
-  const [isExpanded, setIsExpanded] = useState(true);
+const AgendaScreenCard: React.FC<AgendaProps> = ({item, shouldExpand}) => {
+  const {title} = item;
   const {headingText, collapseTitle, arrowIconImage} = styles;
+
+  const [isExpanded, setIsExpanded] = useState(shouldExpand);
 
   return (
     <Collapse

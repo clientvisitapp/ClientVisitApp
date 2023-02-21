@@ -19,8 +19,18 @@ const AgendaScreen: React.FC = () => {
         <Text style={text}>{AGENDA}</Text>
       </View>
       <ScrollView>
-        {AgendaMock.map((mock, index) => {
-          return <AgendaScreenCard key={index} title={mock.title} />;
+        {AgendaMock.map((item, index) => {
+          const currentDate = new Date();
+          let shouldExpand = false;
+          currentDate.getDate() === Number(item.date.substring(0, 2)) &&
+            (shouldExpand = true);
+          return (
+            <AgendaScreenCard
+              key={index}
+              item={item}
+              shouldExpand={shouldExpand}
+            />
+          );
         })}
       </ScrollView>
     </>
