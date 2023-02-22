@@ -5,7 +5,7 @@ import Colors from '../../constants/Colors';
 
 const AgendaIcon = ({style}: {style?: any}) => (
   <View style={style}>
-    <Svg width={22} height={20} fill="none">
+    <Svg width={23} height={22} fill="none">
       <Path
         d="M19.75 22H4.25c-1.52 0-2.75-1.23-2.75-2.75v-13c0-1.52 1.23-2.75 2.75-2.75h15.5c1.52 0 2.75 1.23 2.75 2.75v13c0 1.52-1.23 2.75-2.75 2.75ZM4.25 5C3.56 5 3 5.56 3 6.25v13c0 .69.56 1.25 1.25 1.25h15.5c.69 0 1.25-.56 1.25-1.25v-13C21 5.56 20.44 5 19.75 5H4.25Z"
         fill={Colors.BLACK}
