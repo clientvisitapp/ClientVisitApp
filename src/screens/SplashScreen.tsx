@@ -1,12 +1,12 @@
 import React from 'react';
-import SplashLogo from '../assets/icons/SplashLogo';
-import {StyleSheet, View} from 'react-native';
+// import SplashLogo from '../assets/icons/SplashLogo';
+import {Image, StyleSheet, View} from 'react-native';
 import Colors from '../constants/Colors';
 
 const SplashScreen: React.FC = () => {
   return (
     <View style={styles.logoContainer}>
-      <SplashLogo />
+      <Image source={require('../assets/SplashLogo.png')} />
     </View>
   );
 };
