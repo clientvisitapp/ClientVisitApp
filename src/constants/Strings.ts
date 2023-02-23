@@ -14,4 +14,8 @@ export default {
   CHENNAI:
     'Chennai Formerly Known as Madras, is the capital city of TamilNadu, the \n southernmost Indian State',
   PLACE: 'Mahabalipuram',
+  SIGN_OUT: 'Sign Out',
+  NAME: 'Name',
+  PASSWORD: 'Password',
+  INVALID_CREDENTIALS: 'Invalid Credentials',
 };

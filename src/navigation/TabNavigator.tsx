@@ -12,10 +12,15 @@ import {
   ParamListBase,
   RouteProp,
 } from '@react-navigation/native';
+import {CustomText as Text} from '../components/CustomText';
 import Colors from '../constants/Colors';
 import Strings from '../constants/Strings';
 import {TouchableOpacity, View} from 'react-native';
 import {ContactStackNavigator, HomeStackNavigator} from './StackNavigator';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {useDispatch} from 'react-redux';
+import {AppDispatch} from '../redux/store';
+import {clearAuthData} from '../redux/slices/authSlice';
 
 const Tab = createBottomTabNavigator();
 const {Navigator, Screen} = Tab;
@@ -32,7 +37,10 @@ const TabNavigator: React.FC = () => {
     ROUTE_HOME_TAB,
     ROUTE_PLACESTOVISIT,
     ROUTE_AGENDA,
+    SIGN_OUT,
   } = Strings;
+
+  const dispatch = useDispatch<AppDispatch>();
 
   const getHeaderTitle = (route: RouteProp<ParamListBase>) => {
     const routeName = getFocusedRouteNameFromRoute(route) ?? route.name;
@@ -101,6 +109,23 @@ const TabNavigator: React.FC = () => {
     );
   };
 
+  const signOut = async () => {
+    try {
+      await AsyncStorage.removeItem('@AuthData');
+      dispatch(clearAuthData());
+    } catch (error) {
+      console.log('from local storage', error);
+    }
+  };
+
+  const headerRight = () => (
+    <TouchableOpacity
+      style={{height: 20, width: 60, marginRight: 10}}
+      onPress={() => signOut()}>
+      <Text style={{color: WHITE, fontWeight: '500'}}>{SIGN_OUT}</Text>
+    </TouchableOpacity>
+  );
+
   return (
     <Navigator
       screenOptions={({route}) => ({
@@ -111,6 +136,7 @@ const TabNavigator: React.FC = () => {
         tabBarStyle: {paddingBottom: 6, height: 56, paddingTop: 10},
         tabBarLabelStyle: {fontWeight: 'bold'},
         tabBarActiveTintColor: BLACK,
+        headerRight: () => headerRight(),
       })}>
       <Screen
         name={ROUTE_HOME_TAB}
