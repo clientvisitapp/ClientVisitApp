@@ -67,6 +67,7 @@
       "size" : "64x64"
     },
     {
+      "filename" : "AppIcon64x64@3x.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "3x",
