@@ -30,7 +30,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({navigation}) => {
         <View style={header}>
           <Text style={text}>
             {GREETER}
-            <Text style={{color: BLUE}}>{BESTBUY}</Text>
+            <Text style={{color: BLUE}}>{BESTBUY} </Text>
             {CTDC}
           </Text>
         </View>
