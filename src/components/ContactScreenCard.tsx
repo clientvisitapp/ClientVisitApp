@@ -1,5 +1,5 @@
 import React from 'react';
-import {Image, StyleSheet, View} from 'react-native';
+import {Linking, StyleSheet, TouchableOpacity, View} from 'react-native';
 import Colors from '../constants/Colors';
 
 import {CustomText as Text} from './CustomText';
@@ -28,10 +28,14 @@ const ContactScreenCard: React.FC<ContactScreenProps> = ({
 
   return (
     <View style={card}>
-      <Image source={imageSource} style={DPIconImage} />
+      {/* <Image source={imageSource} style={DPIconImage} /> */}
       <View style={detailsCard}>
         <Text style={nameTextStyle}>{nameText}</Text>
-        <Text style={phoneTextStyle}>{phoneText}</Text>
+        <Text
+          style={phoneTextStyle}
+          onPress={() => Linking.openURL(`tel:${phoneText}`)}>
+          {phoneText}
+        </Text>
         <Text style={mailTextStyle}>{mailText}</Text>
       </View>
     </View>
@@ -77,6 +81,8 @@ const styles = StyleSheet.create({
     fontWeight: '400',
     fontSize: 14,
     lineHeight: 18,
+    color: 'blue',
+    textDecorationLine: 'underline',
   },
   mailTextStyle: {
     width: 175,

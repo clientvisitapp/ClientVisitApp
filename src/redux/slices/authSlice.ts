@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
-import {signInRequest} from '../../api/signIn';
+import {signInRequest} from '../../api/signInApi';
 
 type InitialState = {
   authData: null | {name: string; password: string};

@@ -16,6 +16,7 @@ export default {
   PLACE: 'Mahabalipuram',
   SIGN_OUT: 'Sign Out',
   NAME: 'Name',
+  PLACEHOLDER_NAME: 'User Name',
   PASSWORD: 'Password',
-  INVALID_CREDENTIALS: 'Invalid Credentials',
+  SOMETHING_WENT_WRONG: 'Sorry! something went wrong',
 };
