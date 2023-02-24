@@ -31,7 +31,7 @@ const SignInScreen = () => {
     loginHeader,
     iconStyle,
   } = styles;
-  const {NAME, PASSWORD, INVALID_CREDENTIALS} = Strings;
+  const {NAME, PASSWORD, SOMETHING_WENT_WRONG, PLACEHOLDER_NAME} = Strings;
 
   const dispatch = useDispatch<AppDispatch>();
   const {authError} = useSelector(
@@ -83,7 +83,7 @@ const SignInScreen = () => {
           inputStyle,
           {fontWeight: formData[NAME].value.length === 0 ? '600' : 'normal'},
         ]}
-        placeholder={NAME}
+        placeholder={PLACEHOLDER_NAME}
         placeholderTextColor={BLACK}
         value={formData[NAME].value}
         onChangeText={text => {
@@ -100,6 +100,7 @@ const SignInScreen = () => {
           {
             fontWeight:
               formData[PASSWORD].value.length === 0 ? '600' : 'normal',
+            marginBottom: 10,
           },
         ]}
         placeholder={PASSWORD}
@@ -114,7 +115,7 @@ const SignInScreen = () => {
         secureTextEntry={true}
         onFocus={() => dispatch(clearAuthError())}
       />
-      {authError && <Text style={errorText}>{INVALID_CREDENTIALS}</Text>}
+      {authError && <Text style={errorText}>{SOMETHING_WENT_WRONG}</Text>}
       <TouchableOpacity
         style={buttonStyle}
         onPress={onPressLogin}
@@ -131,8 +132,9 @@ const styles = StyleSheet.create({
   },
   errorText: {
     color: 'red',
-    textAlign: 'center',
-    marginBottom: 10,
+    paddingLeft: 15,
+    fontWeight: 'bold',
+    marginBottom: 30,
   },
   inputStyle: {
     height: 50,

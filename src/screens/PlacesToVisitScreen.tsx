@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {CustomText as Text} from '../components/CustomText';
 import Colors from '../constants/Colors';
 import PlacesToVisitScreenCard from '../components/PlacesToVisitScreenCard';
@@ -6,12 +6,20 @@ import {Image, ScrollView, StyleSheet, View} from 'react-native';
 import Strings from '../constants/Strings';
 import PlacesToVisitIcon from '../assets/icons/PlacesToVisitIcon';
 import {PlacesToVisitScreenMockData} from '../mocks/mockData';
+import {useDispatch} from 'react-redux';
+import {AppDispatch} from '../redux/store';
+import {getPlacesToVisit} from '../redux/slices/placesToVisitSlice';
 
 const {GREY, WHITE} = Colors;
 
 const PlacesToVisitScreen: React.FC = () => {
   const {headerStyle, text, iconStyle, cardView, chennaiText} = styles;
   const {CHENNAI, PLACESTOVISIT} = Strings;
+  const dispatch = useDispatch<AppDispatch>();
+
+  useEffect(() => {
+    dispatch(getPlacesToVisit());
+  }, []);
 
   return (
     <View style={{backgroundColor: GREY}}>

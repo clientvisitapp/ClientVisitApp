@@ -1,10 +1,13 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {CustomText as Text} from '../components/CustomText';
 import Colors from '../constants/Colors';
 import Strings from '../constants/Strings';
 import {ScrollView, StyleSheet, View} from 'react-native';
 import ImageCarousel from '../components/ImageCarousel';
 import HomeScreenCard from '../components/HomeScreenCard';
+import {useDispatch} from 'react-redux';
+import {AppDispatch} from '../redux/store';
+import {getAgenda} from '../redux/slices/agendaSlice';
 
 type HomeScreenProps = {
   navigation: any;
@@ -23,6 +26,11 @@ const HomeScreen: React.FC<HomeScreenProps> = ({navigation}) => {
     ROUTE_AGENDA,
   } = Strings;
   const {header, text} = styles;
+  const dispatch = useDispatch<AppDispatch>();
+
+  useEffect(() => {
+    dispatch(getAgenda());
+  }, []);
 
   return (
     <ScrollView>
