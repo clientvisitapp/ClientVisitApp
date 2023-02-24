@@ -5,8 +5,18 @@ const CarouselOne: React.FC = () => {
   const {mainImage, subImage} = styles;
   return (
     <>
-      <Image style={mainImage} source={require('../assets/Campus.png')} />
-      <Image style={subImage} source={require('../assets/TcsLogo.png')} />
+      <Image
+        style={mainImage}
+        source={{
+          uri: 'https://coestaticcontent.blob.core.windows.net/visit/745332020fcf9604c2aa2be9a58b063e.webp',
+        }}
+      />
+      <Image
+        style={subImage}
+        source={{
+          uri: 'https://coestaticcontent.blob.core.windows.net/visit/Tcs logo.png',
+        }}
+      />
     </>
   );
 };

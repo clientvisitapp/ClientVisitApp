@@ -3,7 +3,7 @@ import CarouselOne from '../assets/CarouselOne';
 import CarouselTwo from '../assets/CarouselTwo';
 
 import Carousel, {Pagination} from 'react-native-snap-carousel';
-import {Dimensions, StyleSheet, View} from 'react-native';
+import {Dimensions, Image, StyleSheet, View} from 'react-native';
 import Colors from '../constants/Colors';
 
 const ImageCarousel: React.FC = () => {
@@ -14,13 +14,23 @@ const ImageCarousel: React.FC = () => {
     <CarouselOne />,
     <CarouselTwo />,
     <CarouselOne />,
+    // require('../assets/Campus.png'),
+    // require('../assets/PlacesToVisit.png'),
+    // require('../assets/Campus.png'),
+    // require('../assets/PlacesToVisit.png'),
+    // require('../assets/Campus.png'),
   ];
 
   const {width: screenWidth} = Dimensions.get('window');
   const [activeSlide, setActiveSlide] = useState(0);
 
   const renderItem = ({item, index}: {item: any; index: number}) => {
-    return <View style={imageContainer}>{item}</View>;
+    return (
+      <View style={imageContainer}>
+        {item}
+        {/* <Image source={item} style={{height: 150, width: 390}} /> */}
+      </View>
+    );
   };
 
   return (

@@ -71,7 +71,12 @@ const SignInScreen = () => {
 
   return (
     <View style={loginContainer}>
-      <Image source={require('../assets/ContactDP.png')} style={iconStyle} />
+      <Image
+        source={{
+          uri: 'https://coestaticcontent.blob.core.windows.net/visit/Group 4.png',
+        }}
+        style={iconStyle}
+      />
       <Text style={loginHeader}>Sign In to Odyssey</Text>
       <TextInput
         style={[
@@ -158,8 +163,10 @@ const styles = StyleSheet.create({
   },
   iconStyle: {
     alignSelf: 'center',
-    marginTop: 100,
+    marginTop: 170,
     marginBottom: 25,
+    height: 100,
+    width: 100,
   },
 });
 

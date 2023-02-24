@@ -21,7 +21,9 @@ const PlacesToVisitScreen: React.FC = () => {
       </View>
       <ScrollView>
         <Image
-          source={require('../assets/PlacesToVisit.png')}
+          source={{
+            uri: 'https://coestaticcontent.blob.core.windows.net/visit/chennai.jpg',
+          }}
           style={cardView}
         />
         <Text style={chennaiText}>{CHENNAI}</Text>

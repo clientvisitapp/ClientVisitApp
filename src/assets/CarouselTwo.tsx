@@ -9,8 +9,13 @@ const CarouselTwo: React.FC = () => {
   const {BLUE} = Colors;
   return (
     <>
-      <Image style={mainImage} source={require('../assets/Campus.png')} />
-      <Image style={subImage} source={require('../assets/TextBackDrop.png')} />
+      <Image
+        style={mainImage}
+        source={{
+          uri: 'https://coestaticcontent.blob.core.windows.net/visit/745332020fcf9604c2aa2be9a58b063e.webp',
+        }}
+      />
+      {/* <Image style={subImage} source={require('../assets/TextBackDrop.png')} /> */}
       <Text style={text}>
         {'\t\t\t' + GREETER}
         <Text style={{color: BLUE}}>{BESTBUY}</Text>

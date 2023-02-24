@@ -2,8 +2,8 @@ import React, {useState} from 'react';
 import {StyleSheet, View} from 'react-native';
 
 import {CustomText as Text} from './CustomText';
-import DownArrowIcon from '../assets/icons/DownArrowIcon';
-import RightArrowIcon from '../assets/icons/RightArrowIcon';
+import CaretDownIcon from '../assets/icons/CaretDownIcon';
+import CaretRightIcon from '../assets/icons/CaretRightIcon';
 
 import {
   Collapse,
@@ -33,9 +33,9 @@ const AgendaScreenCard: React.FC<AgendaProps> = ({item, shouldExpand}) => {
         <View style={collapseTitle}>
           <Text style={headingText}>{title}</Text>
           {isExpanded ? (
-            <DownArrowIcon style={arrowIconImage} />
+            <CaretDownIcon style={arrowIconImage} />
           ) : (
-            <RightArrowIcon style={arrowIconImage} />
+            <CaretRightIcon style={arrowIconImage} />
           )}
         </View>
       </CollapseHeader>
