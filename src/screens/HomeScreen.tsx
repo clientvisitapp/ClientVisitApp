@@ -37,12 +37,16 @@ const HomeScreen: React.FC<HomeScreenProps> = ({navigation}) => {
         <ImageCarousel />
         <HomeScreenCard
           title={AGENDA}
-          imageSource={require('../assets/Agenda.png')}
+          imageSource={{
+            uri: 'https://coestaticcontent.blob.core.windows.net/visit/group-diverse-people-having-business-meeting.jpeg',
+          }}
           onPress={() => navigation.navigate(ROUTE_AGENDA)}
         />
         <HomeScreenCard
           title={PLACESTOVISIT}
-          imageSource={require('../assets/PlacesToVisit.png')}
+          imageSource={{
+            uri: 'https://coestaticcontent.blob.core.windows.net/visit/chennai.jpg',
+          }}
           onPress={() => navigation.navigate(ROUTE_PLACESTOVISIT)}
         />
       </View>
