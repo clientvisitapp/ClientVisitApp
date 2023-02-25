@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {Platform, StyleSheet, View} from 'react-native';
 
 import {CustomText as Text} from './CustomText';
 import Colors from '../constants/Colors';
@@ -14,6 +14,16 @@ type ActivityProps = {
 
 const {WHITE, GREY} = Colors;
 
+const androidStyle = {
+  elevation: 10,
+};
+const iosStyle = {
+  shadowColor: '#171717',
+  shadowOpacity: 0.2,
+  shadowOffset: {width: 0 - 0, height: 0 - 0},
+  shadowRadius: 3,
+};
+
 const ActivityCard: React.FC<ActivityProps> = ({
   header,
   description,
@@ -24,50 +34,46 @@ const ActivityCard: React.FC<ActivityProps> = ({
   const {activityCard, activityText, generalText, timeText} = styles;
 
   return (
-    <View style={activityCard}>
-      <Text style={activityText}>{header}</Text>
-      <Text style={timeText}>{time}</Text>
-      <Text style={generalText}>{description}</Text>
-      <Text style={generalText}>{location}</Text>
-      <Text style={generalText}>{team}</Text>
+    <View
+      style={[
+        activityCard,
+        Platform.OS === 'android' ? androidStyle : iosStyle,
+      ]}>
+      {header ? <Text style={activityText}>{header}</Text> : null}
+      {time ? <Text style={timeText}>{time}</Text> : null}
+      {description ? <Text style={generalText}>{description}</Text> : null}
+      {location ? <Text style={generalText}>{location}</Text> : null}
+      {team ? <Text style={generalText}>{team}</Text> : null}
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   activityCard: {
-    width: 360,
     backgroundColor: WHITE,
     borderColor: GREY,
     borderWidth: 1,
     padding: 16,
+    paddingHorizontal: 10,
     gap: 8,
     marginHorizontal: 14,
     marginBottom: 16,
-    shadowOpacity: 0.2,
-    shadowOffset: {width: 0 - 0, height: 0 - 0},
   },
   activityText: {
-    width: 296,
     fontWeight: '700',
     fontSize: 16,
-    lineHeight: 20,
     marginLeft: 16,
     // marginTop: 8,
   },
   generalText: {
-    width: 296,
     fontWeight: '400',
     fontSize: 14,
-    lineHeight: 18,
     marginLeft: 16,
     // marginBottom: 8,
   },
   timeText: {
-    width: 296,
     fontWeight: '700',
     fontSize: 14,
-    lineHeight: 18,
     marginLeft: 16,
     // marginTop: 16,
     color: Colors.BLUE,

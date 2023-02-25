@@ -30,7 +30,11 @@ const PlacesToVisitScreenCard: React.FC<PlacesToVisitScreenCardProps> = ({
 
   return (
     <TouchableOpacity onPress={handleOpenWithLinking}>
-      <Image source={imageSource} style={cardView} />
+      <Image
+        source={{uri: imageSource}}
+        style={cardView}
+        defaultSource={require('../assets/PlacesPlaceholder.png')}
+      />
       <Text style={text}>{attraction}</Text>
     </TouchableOpacity>
   );

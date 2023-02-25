@@ -2,27 +2,53 @@ import React, {useEffect} from 'react';
 import {CustomText as Text} from '../components/CustomText';
 import Colors from '../constants/Colors';
 import PlacesToVisitScreenCard from '../components/PlacesToVisitScreenCard';
-import {Image, ScrollView, StyleSheet, View} from 'react-native';
+import {
+  ActivityIndicator,
+  Image,
+  ScrollView,
+  StyleSheet,
+  View,
+} from 'react-native';
 import Strings from '../constants/Strings';
 import PlacesToVisitIcon from '../assets/icons/PlacesToVisitIcon';
 import {
   ChennaiPlacesToVisitScreenMockData,
   KochiPlacesToVisitScreenMockData,
 } from '../mocks/mockData';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {AppDispatch} from '../redux/store';
 import {getPlacesToVisit} from '../redux/slices/placesToVisitSlice';
+import {placesToVisitType} from '../types';
 
-const {GREY, WHITE} = Colors;
+const {GREY, WHITE, BLUE} = Colors;
 
 const PlacesToVisitScreen: React.FC = () => {
   const {headingStyle, text, iconStyle, chennaiText} = styles;
   const {CHENNAI, PLACESTOVISIT} = Strings;
   const dispatch = useDispatch<AppDispatch>();
+  const {
+    loader,
+    placesToVisit: {placesToVisitDetails},
+  } = useSelector(
+    (state: {
+      loader: {isLoading: boolean};
+      placesToVisit: {placesToVisitDetails: placesToVisitType[]};
+    }) => state,
+  );
 
   useEffect(() => {
     dispatch(getPlacesToVisit());
   }, []);
+
+  if (loader.isLoading) {
+    return (
+      <ActivityIndicator
+        color={BLUE}
+        size="large"
+        style={{flex: 1, justifyContent: 'center'}}
+      />
+    );
+  }
 
   return (
     <View style={{backgroundColor: WHITE}}>
@@ -36,26 +62,26 @@ const PlacesToVisitScreen: React.FC = () => {
         <View style={headingStyle}>
           <Text style={text}>Chennai</Text>
         </View>
-        {ChennaiPlacesToVisitScreenMockData.map((mock, index) => {
+        {placesToVisitDetails[0]?.placeDetails?.map((item, index) => {
           return (
             <PlacesToVisitScreenCard
               key={index}
-              imageSource={mock.imageSource}
-              siteSource={mock.siteSource}
-              attraction={mock.attraction}
+              imageSource={item.imageSource}
+              siteSource={item.siteSource}
+              attraction={item.attraction}
             />
           );
         })}
         <View style={headingStyle}>
           <Text style={text}>Kochi</Text>
         </View>
-        {KochiPlacesToVisitScreenMockData.map((mock, index) => {
+        {placesToVisitDetails[1]?.placeDetails?.map((item, index) => {
           return (
             <PlacesToVisitScreenCard
               key={index}
-              imageSource={mock.imageSource}
-              siteSource={mock.siteSource}
-              attraction={mock.attraction}
+              imageSource={item.imageSource}
+              siteSource={item.siteSource}
+              attraction={item.attraction}
             />
           );
         })}

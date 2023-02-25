@@ -1,18 +1,47 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 
 import AgendaIcon from '../assets/icons/AgendaIcon';
 import {CustomText as Text} from '../components/CustomText';
-import {ScrollView, StyleSheet, View} from 'react-native';
+import {ActivityIndicator, ScrollView, StyleSheet, View} from 'react-native';
 import Colors from '../constants/Colors';
 import Strings from '../constants/Strings';
 import {ActivityMock, AgendaMock} from '../mocks/mockData';
 import AgendaScreenCard from '../components/AgendaScreenCard';
 import ActivityCard from '../components/ActivityCard';
+import {useDispatch, useSelector} from 'react-redux';
+import {agendaType} from '../types';
+import {getAgenda} from '../redux/slices/agendaSlice';
+import {AppDispatch} from '../redux/store';
 
 const AgendaScreen: React.FC = () => {
   const {text, iconStyle} = styles;
   const {AGENDA} = Strings;
+  const dispatch = useDispatch<AppDispatch>();
+
+  const {
+    agenda: {agendas},
+    loader: {isLoading},
+  } = useSelector(
+    (state: {agenda: {agendas: agendaType[]}; loader: {isLoading: boolean}}) =>
+      state,
+  );
   const [clickedIndex, setClickedIndex] = useState(0);
+  const {loader} = useSelector(
+    (state: {loader: {isLoading: boolean}}) => state,
+  );
+  useEffect(() => {
+    dispatch(getAgenda());
+  }, []);
+
+  if (isLoading) {
+    return (
+      <ActivityIndicator
+        color={Colors.BLUE}
+        size="large"
+        style={{flex: 1, justifyContent: 'center'}}
+      />
+    );
+  }
 
   return (
     <View
@@ -21,10 +50,10 @@ const AgendaScreen: React.FC = () => {
         flex: 1,
       }}>
       <ScrollView
-        style={{flexDirection: 'row'}}
+        style={{flexDirection: 'row', alignSelf: 'center'}}
         horizontal={true}
         showsHorizontalScrollIndicator={false}>
-        {AgendaMock.map((item, index) => {
+        {agendas.map((item, index) => {
           return (
             <AgendaScreenCard
               key={index}
@@ -36,16 +65,16 @@ const AgendaScreen: React.FC = () => {
           );
         })}
       </ScrollView>
-      <ScrollView>
-        {ActivityMock[clickedIndex].map((mock, index) => {
+      <ScrollView style={{marginVertical: 16}}>
+        {agendas[clickedIndex]?.agendaDetails?.map((item, index) => {
           return (
             <ActivityCard
               key={index}
-              header={mock.header}
-              description={mock.description}
-              location={mock.location}
-              time={mock.time}
-              team={mock.team}
+              header={item.title}
+              description={item.description}
+              location={item.location}
+              time={item.time}
+              team={item.team}
             />
           );
         })}

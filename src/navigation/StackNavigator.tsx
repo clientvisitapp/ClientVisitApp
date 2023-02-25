@@ -8,11 +8,12 @@ import PlacesToVisitScreen from '../screens/PlacesToVisitScreen';
 import ContactScreen from '../screens/ContactScreen';
 import Colors from '../constants/Colors';
 import BackIcon from '../assets/icons/BackIcon';
-import {StyleSheet, Text, TouchableOpacity} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, Image} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {AppDispatch} from '../redux/store';
 import {clearAuthData} from '../redux/slices/authSlice';
+import SignInScreen from '../screens/SignInScreen';
 
 const Stack = createNativeStackNavigator();
 const {Navigator, Screen} = Stack;
@@ -30,6 +31,9 @@ const {
 
 const AppStack: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
+  const {
+    loader: {isLoading},
+  } = useSelector((state: {loader: {isLoading: boolean}}) => state);
   const headerLeft = (navigation: any) => (
     <TouchableOpacity onPress={() => navigation.goBack()}>
       <BackIcon />
@@ -64,7 +68,7 @@ const AppStack: React.FC = () => {
       <Screen
         name={ROUTE_HOME}
         component={HomeScreen}
-        options={({route, navigation}) => ({
+        options={() => ({
           headerTitle: '',
           headerLeft: null,
         })}
@@ -88,4 +92,21 @@ const AppStack: React.FC = () => {
   );
 };
 
-export {AppStack};
+const LoginStack: React.FC = () => {
+  return (
+    <Navigator>
+      <Screen
+        name={'signin'}
+        component={SignInScreen}
+        options={{headerShown: false}}
+      />
+      <Screen
+        name={'main'}
+        component={AppStack}
+        options={{headerShown: false}}
+      />
+    </Navigator>
+  );
+};
+
+export {AppStack, LoginStack};

@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {ScrollView, View} from 'react-native';
+import {ActivityIndicator, ScrollView, View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import ContactScreenCard from '../components/ContactScreenCard';
 import Colors from '../constants/Colors';
@@ -7,20 +7,34 @@ import {getContacts} from '../redux/slices/contactsSlice';
 import {AppDispatch} from '../redux/store';
 import {contactsType} from '../types';
 
-const {WHITE, GREY} = Colors;
+const {BLUE, WHITE} = Colors;
 
 const ContactScreen: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const {contacts} = useSelector(
-    (state: {contact: {contacts: contactsType[]}}) => state.contact,
+  const {loader, contact} = useSelector(
+    (state: {
+      loader: {isLoading: boolean};
+      contact: {contacts: contactsType[]};
+    }) => state,
   );
+  const {contacts} = contact;
 
   useEffect(() => {
     dispatch(getContacts());
   }, []);
 
+  if (loader.isLoading) {
+    return (
+      <ActivityIndicator
+        color={BLUE}
+        size="large"
+        style={{flex: 1, justifyContent: 'center'}}
+      />
+    );
+  }
+
   return (
-    <View style={{backgroundColor: GREY, flex: 1}}>
+    <View style={{backgroundColor: WHITE, flex: 1}}>
       <ScrollView>
         {contacts?.map((item, index) => {
           return (

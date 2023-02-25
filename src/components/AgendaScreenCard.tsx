@@ -5,6 +5,7 @@ import {
   TouchableHighlight,
   View,
   ScrollView,
+  Platform,
 } from 'react-native';
 
 import CaretDownIcon from '../assets/icons/CaretDownIcon';
@@ -19,15 +20,25 @@ import Colors from '../constants/Colors';
 import {ActivityMock} from '../mocks/mockData';
 import ActivityCard from './ActivityCard';
 import {TouchableOpacity} from 'react-native';
+import moment from 'moment';
 
 type AgendaProps = {
   item: {
-    title: string;
     date: string;
   };
   index: number;
   clickedIndex: number;
   setClickedIndex: (value: number) => void;
+};
+
+const androidStyle = {
+  elevation: 5,
+};
+const iosStyle = {
+  shadowColor: '#171717',
+  shadowOpacity: 0.2,
+  shadowOffset: {width: 0 - 0, height: 0 - 0},
+  shadowRadius: 3,
 };
 
 const AgendaScreenCard: React.FC<AgendaProps> = ({
@@ -36,37 +47,25 @@ const AgendaScreenCard: React.FC<AgendaProps> = ({
   clickedIndex,
   setClickedIndex,
 }) => {
-  const {title} = item;
+  const {title, date} = item;
   const {btnPressText, btnNormalText, btnNormal, btnPress} = styles;
 
-  // var [isPress, setIsPress] = useState(false);
-
-  // var touchProps = {
-  //   activeOpacity: 1,
-  //   //underlayColor: 'blue',
-  //   onPress: () => {
-  //     // color change setIspressed(true)
-  //     setIsPress(true);
-  //     setClickedIndex(index);
-  //   },
-  // };
-  // const date = new Date(item.date);
-  // console.log(date.toLocaleString('default', {month: 'long'}));
+  const momentObject = moment(item.date, 'MM-DD-YYYY');
+  const formattedDate = moment(momentObject).format('DD MMMM');
+  console.log(formattedDate);
   return (
-    <>
-      <View>
-        <TouchableOpacity
-          style={index === clickedIndex ? btnPress : btnNormal}
-          onPress={() => {
-            //setIsPress(!isPress);
-            setClickedIndex(index);
-          }}>
-          <Text style={index === clickedIndex ? btnPressText : btnNormalText}>
-            {title}
-          </Text>
-        </TouchableOpacity>
-      </View>
-    </>
+    <TouchableOpacity
+      style={[
+        index === clickedIndex ? btnPress : btnNormal,
+        Platform.OS === 'android' ? androidStyle : iosStyle,
+      ]}
+      onPress={() => {
+        setClickedIndex(index);
+      }}>
+      <Text style={index === clickedIndex ? btnPressText : btnNormalText}>
+        {formattedDate}
+      </Text>
+    </TouchableOpacity>
   );
 };
 

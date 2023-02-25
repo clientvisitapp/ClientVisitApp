@@ -1,4 +1,9 @@
-export type agenda = {
+export type loginCredentials = {
+  username: string;
+  password: string;
+};
+
+export type agendaType = {
   date: string;
   agendaDetails: {
     title: string;
@@ -18,7 +23,7 @@ export type formattedAgenda = {
   };
 };
 
-export type placesToVisit = {
+export type placesToVisitType = {
   location: string;
   placeDetails: {
     heading: string;

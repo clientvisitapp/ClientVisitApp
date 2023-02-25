@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import {
-  Button,
   StyleSheet,
   TextInput,
   View,
   TouchableOpacity,
   Image,
+  ActivityIndicator,
 } from 'react-native';
 import {CustomText as Text} from '../components/CustomText';
 import {useDispatch, useSelector} from 'react-redux';
@@ -31,42 +31,55 @@ const SignInScreen = () => {
     loginHeader,
     iconStyle,
   } = styles;
-  const {NAME, PASSWORD, SOMETHING_WENT_WRONG, PLACEHOLDER_NAME} = Strings;
+  const {NAME, PASSWORD, SOMETHING_WENT_WRONG, PLACEHOLDER_NAME, ROUTE_HOME} =
+    Strings;
 
   const dispatch = useDispatch<AppDispatch>();
-  const {authError} = useSelector(
-    (state: {auth: {authError: null | string}}) => state.auth,
+  const {loader, auth} = useSelector(
+    (state: {loader: {isLoading: boolean}; auth: {authError: null | string}}) =>
+      state,
   );
+  const {authError} = auth;
   const [formData, setFormData] = useState({
     [NAME]: {value: ''},
     [PASSWORD]: {value: ''},
   });
-  const [isLoading, setIsLoading] = useState(true);
   const isValueEntered = formData[NAME].value && formData[PASSWORD].value;
 
-  useEffect(() => {
-    checkLocalStorage();
-  }, []);
+  // useEffect(() => {
+  //   checkLocalStorage();
+  // }, []);
 
-  const checkLocalStorage = async () => {
-    try {
-      const authDataSerialized = await AsyncStorage.getItem('@AuthData');
-      if (authDataSerialized) {
-        dispatch(updateAuthData(JSON.parse(authDataSerialized)));
-      }
-    } catch (error) {
-      console.log('from local storage', error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  // const checkLocalStorage = async () => {
+  //   try {
+  //     const authDataSerialized = await AsyncStorage.getItem('@AuthData');
+  //     if (authDataSerialized) {
+  //       dispatch(updateAuthData(JSON.parse(authDataSerialized)));
+  //     }
+  //   } catch (error) {
+  //     console.log('from local storage', error);
+  //   }
+  // };
 
   const onPressLogin = () => {
-    formData[NAME].value && formData[PASSWORD].value && dispatch(signIn());
+    formData[NAME].value &&
+      formData[PASSWORD].value &&
+      dispatch(
+        signIn({
+          username: formData[NAME].value,
+          password: formData[PASSWORD].value,
+        }),
+      );
   };
 
-  if (isLoading) {
-    return null;
+  if (loader.isLoading) {
+    return (
+      <ActivityIndicator
+        color={BLUE}
+        size="large"
+        style={{flex: 1, justifyContent: 'center'}}
+      />
+    );
   }
 
   return (

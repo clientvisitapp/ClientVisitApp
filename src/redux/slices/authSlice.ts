@@ -1,25 +1,29 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 import {signInRequest} from '../../api/signInApi';
+import {loginCredentials} from '../../types';
+import {completed, inProgress} from './loaderSlice';
 
 type InitialState = {
-  authData: null | {name: string; password: string};
+  authData: null | object;
   authError: null | string;
 };
 
 const initialState: InitialState = {
-  // authData:{name:'',password:''},
-  authData: null,
+  authData: {message: 'succcess'},
   authError: null,
 };
 
 export const signIn = createAsyncThunk(
   'auth/signIn',
-  async (value: void, {rejectWithValue}) => {
+  async (value: loginCredentials, {rejectWithValue, dispatch}) => {
+    dispatch(inProgress());
     try {
-      const data = await signInRequest();
+      const data = await signInRequest(value);
+      dispatch(completed());
       return data;
     } catch (error) {
+      dispatch(completed());
       return rejectWithValue(error);
     }
   },

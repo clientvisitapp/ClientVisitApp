@@ -2,10 +2,10 @@ import React, {useEffect} from 'react';
 import Colors from '../constants/Colors';
 import Strings from '../constants/Strings';
 import {CustomText as Text} from '../components/CustomText';
-import {ScrollView, StyleSheet, View} from 'react-native';
+import {ActivityIndicator, ScrollView, StyleSheet, View} from 'react-native';
 import ImageCarousel from '../components/ImageCarousel';
 import HomeScreenCard from '../components/HomeScreenCard';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {AppDispatch} from '../redux/store';
 import {getAgenda} from '../redux/slices/agendaSlice';
 import {Image} from 'react-native';
@@ -30,10 +30,6 @@ const HomeScreen: React.FC<HomeScreenProps> = ({navigation}) => {
   } = Strings;
   const {headerImage, header, text} = styles;
   const dispatch = useDispatch<AppDispatch>();
-
-  useEffect(() => {
-    dispatch(getAgenda());
-  }, []);
 
   return (
     <ScrollView style={{backgroundColor: WHITE, flex: 1}}>
@@ -76,13 +72,12 @@ const HomeScreen: React.FC<HomeScreenProps> = ({navigation}) => {
 
 const styles = StyleSheet.create({
   headerImage: {
-    height: 180,
+    height: 200,
   },
   header: {
-    width: 360,
-    height: 88,
     marginLeft: 16,
     marginTop: 17,
+    marginBottom: 8,
   },
   text: {
     fontWeight: '700',

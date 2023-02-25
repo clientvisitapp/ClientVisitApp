@@ -1,22 +1,26 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 import {placesToVisitRequest} from '../../api/placesToVisitApi';
-import {placesToVisit, formattedPlacesToVisitType} from '../../types';
+import {placesToVisitType, formattedPlacesToVisitType} from '../../types';
+import {completed, inProgress} from './loaderSlice';
 
 type InitialState = {
-  placesToVisit: placesToVisit[];
+  placesToVisitDetails: placesToVisitType[];
 };
 
 const initialState: InitialState = {
-  placesToVisit: [],
+  placesToVisitDetails: [],
 };
 
 export const getPlacesToVisit = createAsyncThunk(
   'placesToVisit/getPlacesToVisit',
-  async (value: void, {rejectWithValue}) => {
+  async (value: void, {rejectWithValue, dispatch}) => {
+    dispatch(inProgress());
     try {
       const data = await placesToVisitRequest();
+      dispatch(completed());
       return data;
     } catch (error) {
+      dispatch(completed());
       return rejectWithValue(error);
     }
   },
@@ -30,13 +34,14 @@ const placesToVisitSlice = createSlice({
     builder
       .addCase(getPlacesToVisit.fulfilled, (state, action) => {
         const mappedPlacesToVisit = {};
-        const placesToVisitResult: placesToVisit[] = [];
+        const placesToVisitResult: placesToVisitType[] = [];
         const formattedPlacesToVisit = action.payload.map(item => {
           return {
             location: item.location,
             placeDetail: {
-              heading: item.attraction,
+              attraction: item.attraction,
               imageSource: item.imageUrl,
+              siteSource: item.siteUrl,
             },
           };
         });
@@ -59,11 +64,11 @@ const placesToVisitSlice = createSlice({
         Object.keys(mappedPlacesToVisit).map(item => {
           placesToVisitResult.push(mappedPlacesToVisit[item]);
         });
-        state.placesToVisit = placesToVisitResult;
+        state.placesToVisitDetails = placesToVisitResult;
         console.log(
           action.payload,
           'from fulfilled',
-          JSON.stringify(state.placesToVisit),
+          JSON.stringify(state.placesToVisitDetails),
         );
       })
       .addCase(getPlacesToVisit.rejected, (state, action) => {

@@ -1,22 +1,26 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 import {agendaRequest} from '../../api/agendaApi';
-import {agenda, formattedAgenda} from '../../types';
+import {agendaType, formattedAgenda} from '../../types';
+import {completed, inProgress} from './loaderSlice';
 
 type InitialState = {
-  agenda: agenda;
+  agendas: agendaType;
 };
 
 const initialState: InitialState = {
-  agenda: [],
+  agendas: [],
 };
 
 export const getAgenda = createAsyncThunk(
   'agenda/getAgenda',
-  async (value: void, {rejectWithValue}) => {
+  async (value: void, {rejectWithValue, dispatch}) => {
+    dispatch(inProgress());
     try {
       const data = await agendaRequest();
+      dispatch(completed());
       return data;
     } catch (error) {
+      dispatch(completed());
       return rejectWithValue(error);
     }
   },
@@ -30,14 +34,15 @@ const agendaSlice = createSlice({
     builder
       .addCase(getAgenda.fulfilled, (state, action) => {
         const mappedAgenda = {};
-        const agendaResult: agenda = [];
+        const agendaResult: agendaType = [];
         const formattedResponse = action.payload.map(item => ({
           date: item.dateOfVisit,
           activityDetail: {
             title: item.agendaActivityTitle,
             description: item.agendaActivityDetails,
             location: item.agendaLocation,
-            time: item.agendaStartTime,
+            time: item.agendaTime,
+            team: item.agendaHostingDetails,
           },
         }));
         formattedResponse.map((item: formattedAgenda) => {
@@ -59,11 +64,11 @@ const agendaSlice = createSlice({
         Object.keys(mappedAgenda).map(item => {
           agendaResult.push(mappedAgenda[item]);
         });
-        state.agenda = agendaResult;
+        state.agendas = agendaResult;
         console.log(
           action.payload,
           'from fulfilled',
-          JSON.stringify(state.agenda),
+          JSON.stringify(state.agendas),
         );
       })
       .addCase(getAgenda.rejected, (state, action) => {

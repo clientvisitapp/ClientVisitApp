@@ -2,6 +2,7 @@ import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 import {contactRequest} from '../../api/contactApi';
 import {placesToVisitRequest} from '../../api/placesToVisitApi';
 import {placesToVisit, formattedPlacesToVisit, contactsType} from '../../types';
+import {completed, inProgress} from './loaderSlice';
 
 type InitialState = {
   contacts: contactsType[];
@@ -13,11 +14,14 @@ const initialState: InitialState = {
 
 export const getContacts = createAsyncThunk(
   'contacts/getContacts',
-  async (value: void, {rejectWithValue}) => {
+  async (value: void, {rejectWithValue, dispatch}) => {
     try {
+      dispatch(inProgress());
       const data = await contactRequest();
+      dispatch(completed());
       return data;
     } catch (error) {
+      dispatch(completed());
       return rejectWithValue(error);
     }
   },
