@@ -24,10 +24,10 @@ const ActivityCard: React.FC<ActivityProps> = ({
 
   return (
     <View style={activityCard}>
+      <Text style={timeText}>{time}</Text>
       <Text style={activityText}>{header}</Text>
       <Text style={descriptionText}>{description}</Text>
       <Text style={locationText}>{location}</Text>
-      <Text style={timeText}>{time}</Text>
     </View>
   );
 };
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     lineHeight: 20,
     marginLeft: 16,
-    marginTop: 16,
+    marginTop: 8,
   },
   descriptionText: {
     width: 296,
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     lineHeight: 18,
     marginLeft: 16,
-    marginBottom: 16,
+    marginTop: 16,
     color: Colors.BLUE,
   },
 });

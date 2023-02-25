@@ -4,7 +4,7 @@ import Home from '../assets/icons/HomeIcon';
 import Contact from '../assets/icons/ContactIcon';
 import Back from '../assets/icons/BackIcon';
 import Close from '../assets/icons/CloseIcon';
-import ContactIcon from '../assets/icons/ContactsIcon';
+import ContactIcon from '../assets/icons/ContactIcon';
 
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {

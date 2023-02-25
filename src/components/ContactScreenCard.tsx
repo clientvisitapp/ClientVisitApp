@@ -28,7 +28,7 @@ const ContactScreenCard: React.FC<ContactScreenProps> = ({
 
   return (
     <View style={card}>
-      <Image source={imageSource} style={DPIconImage} />
+      <Image source={{uri: imageSource}} style={DPIconImage} />
       <View style={detailsCard}>
         <Text style={nameTextStyle}>{nameText}</Text>
         <Text
@@ -59,6 +59,7 @@ const styles = StyleSheet.create({
   DPIconImage: {
     width: 71.67,
     height: 71.67,
+    borderRadius: 71.67 / 2,
     position: 'absolute',
     top: 24.17,
     left: 15.17,

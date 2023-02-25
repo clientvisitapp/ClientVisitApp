@@ -18,6 +18,7 @@ import {
 import Colors from '../constants/Colors';
 import {ActivityMock} from '../mocks/mockData';
 import ActivityCard from './ActivityCard';
+import {TouchableOpacity} from 'react-native';
 
 type AgendaProps = {
   item: {
@@ -54,7 +55,7 @@ const AgendaScreenCard: React.FC<AgendaProps> = ({
   return (
     <>
       <View>
-        <TouchableHighlight
+        <TouchableOpacity
           style={index === clickedIndex ? btnPress : btnNormal}
           onPress={() => {
             //setIsPress(!isPress);
@@ -63,7 +64,7 @@ const AgendaScreenCard: React.FC<AgendaProps> = ({
           <Text style={index === clickedIndex ? btnPressText : btnNormalText}>
             {title}
           </Text>
-        </TouchableHighlight>
+        </TouchableOpacity>
       </View>
     </>
   );
