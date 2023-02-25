@@ -1,50 +1,55 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import AgendaIcon from '../assets/icons/AgendaIcon';
 import {CustomText as Text} from '../components/CustomText';
 import {ScrollView, StyleSheet, View} from 'react-native';
 import Colors from '../constants/Colors';
 import Strings from '../constants/Strings';
-import {AgendaMock} from '../mocks/mockData';
+import {ActivityMock, AgendaMock} from '../mocks/mockData';
 import AgendaScreenCard from '../components/AgendaScreenCard';
+import ActivityCard from '../components/ActivityCard';
 
 const AgendaScreen: React.FC = () => {
-  const {header, text, iconStyle} = styles;
+  const {text, iconStyle} = styles;
   const {AGENDA} = Strings;
+  const [clickedIndex, setClickedIndex] = useState(0);
 
   return (
-    <>
-      <View style={header}>
-        <AgendaIcon style={iconStyle} />
-        <Text style={text}>{AGENDA}</Text>
-      </View>
-      <ScrollView>
+    <View style={{backgroundColor: Colors.WHITE, flex: 1}}>
+      <ScrollView
+        style={{flexDirection: 'row'}}
+        horizontal={true}
+        showsHorizontalScrollIndicator={false}>
         {AgendaMock.map((item, index) => {
-          const currentDate = new Date();
-          let shouldExpand = false;
-          currentDate.getDate() === Number(item.date.substring(0, 2)) &&
-            (shouldExpand = true);
           return (
             <AgendaScreenCard
               key={index}
               item={item}
-              shouldExpand={shouldExpand}
+              index={index}
+              clickedIndex={clickedIndex}
+              setClickedIndex={setClickedIndex}
             />
           );
         })}
       </ScrollView>
-    </>
+      <ScrollView>
+        {ActivityMock[clickedIndex].map((mock, index) => {
+          return (
+            <ActivityCard
+              key={index}
+              header={mock.header}
+              description={mock.description}
+              location={mock.location}
+              time={mock.time}
+            />
+          );
+        })}
+      </ScrollView>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  header: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    height: 64,
-    width: 390,
-    backgroundColor: Colors.WHITE,
-  },
   text: {
     fontWeight: '700',
     fontSize: 16,

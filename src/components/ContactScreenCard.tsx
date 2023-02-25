@@ -1,5 +1,5 @@
 import React from 'react';
-import {Linking, StyleSheet, TouchableOpacity, View} from 'react-native';
+import {Image, Linking, StyleSheet, TouchableOpacity, View} from 'react-native';
 import Colors from '../constants/Colors';
 
 import {CustomText as Text} from './CustomText';
@@ -28,7 +28,7 @@ const ContactScreenCard: React.FC<ContactScreenProps> = ({
 
   return (
     <View style={card}>
-      {/* <Image source={imageSource} style={DPIconImage} /> */}
+      <Image source={imageSource} style={DPIconImage} />
       <View style={detailsCard}>
         <Text style={nameTextStyle}>{nameText}</Text>
         <Text
@@ -44,40 +44,41 @@ const ContactScreenCard: React.FC<ContactScreenProps> = ({
 
 const styles = StyleSheet.create({
   card: {
-    width: 390,
-    height: 116,
-    marginTop: 24,
-    marginBottom: 28,
+    width: 360,
+    height: 120,
+    padding: 16,
+    borderRadius: 4,
+    marginVertical: 8,
+    marginLeft: 16,
     flexDirection: 'row',
     alignItems: 'center',
+    backgroundColor: Colors.WHITE,
+    shadowOpacity: 0.3,
+    shadowOffset: {width: 0 - 0, height: 0 - 0},
   },
   DPIconImage: {
-    width: 104,
-    height: 104,
-    borderRadius: 104 / 2,
-    marginLeft: 12,
+    width: 71.67,
+    height: 71.67,
+    position: 'absolute',
+    top: 24.17,
+    left: 15.17,
   },
   detailsCard: {
-    width: 254,
-    height: 116,
-    marginLeft: 8,
-    borderRadius: 4,
+    marginLeft: 94,
     backgroundColor: Colors.WHITE,
   },
   nameTextStyle: {
-    width: 240,
-    height: 20,
-    marginTop: 8,
-    marginLeft: 8,
-    fontWeight: '500',
-    fontSize: 16,
-    lineHeight: 20,
+    width: 218,
+    height: 18,
+    marginTop: 16,
+    fontWeight: '400',
+    fontSize: 14,
+    lineHeight: 18,
   },
   phoneTextStyle: {
-    width: 216,
+    width: 200,
     height: 18,
-    marginVertical: 12,
-    marginLeft: 8,
+    marginVertical: 8,
     fontWeight: '400',
     fontSize: 14,
     lineHeight: 18,
@@ -85,13 +86,12 @@ const styles = StyleSheet.create({
     textDecorationLine: 'underline',
   },
   mailTextStyle: {
-    width: 175,
-    height: 33,
-    marginBottom: 13,
-    marginLeft: 8,
+    width: 218,
+    height: 36,
+    marginBottom: 16,
     fontWeight: '400',
-    fontSize: 12,
-    lineHeight: 16,
+    fontSize: 14,
+    lineHeight: 18,
   },
 });
 

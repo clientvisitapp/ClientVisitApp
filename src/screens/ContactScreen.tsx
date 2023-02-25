@@ -8,7 +8,7 @@ const {WHITE, GREY} = Colors;
 
 const ContactScreen: React.FC = () => {
   return (
-    <View style={{backgroundColor: GREY}}>
+    <View style={{backgroundColor: GREY, flex: 1}}>
       <ScrollView>
         {ContactScreenMockData.map((mock, index) => {
           return (

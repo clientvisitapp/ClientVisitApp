@@ -40,8 +40,8 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     marginHorizontal: 14,
     marginBottom: 16,
-    shadowOpacity: 0.2,
-    shadowOffset: {width: 3, height: 3},
+    shadowOpacity: 0.3,
+    shadowOffset: {width: 0 - 0, height: 0 - 0},
   },
   activityText: {
     width: 296,
