@@ -42,10 +42,9 @@ const styles = StyleSheet.create({
   heading: {
     flexDirection: 'row',
     alignItems: 'center',
-    width: 360,
     height: 90,
     borderRadius: 4,
-    marginLeft: 16,
+    marginHorizontal: 16,
     marginVertical: 16,
     backgroundColor: Colors.WHITE,
     borderColor: Colors.GREY,
