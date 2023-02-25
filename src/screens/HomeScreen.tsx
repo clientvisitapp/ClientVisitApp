@@ -24,6 +24,8 @@ const HomeScreen: React.FC<HomeScreenProps> = ({navigation}) => {
     PLACESTOVISIT,
     ROUTE_PLACESTOVISIT,
     ROUTE_AGENDA,
+    ROUTE_CONTACT,
+    CONTACTS,
   } = Strings;
   const {header, text} = styles;
   const dispatch = useDispatch<AppDispatch>();
@@ -56,6 +58,13 @@ const HomeScreen: React.FC<HomeScreenProps> = ({navigation}) => {
             uri: 'https://coestaticcontent.blob.core.windows.net/visit/chennai.jpg',
           }}
           onPress={() => navigation.navigate(ROUTE_PLACESTOVISIT)}
+        />
+        <HomeScreenCard
+          title={CONTACTS}
+          imageSource={{
+            uri: 'https://coestaticcontent.blob.core.windows.net/visit/chennai.jpg',
+          }}
+          onPress={() => navigation.navigate(ROUTE_CONTACT)}
         />
       </View>
     </ScrollView>

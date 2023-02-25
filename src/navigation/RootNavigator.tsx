@@ -3,6 +3,7 @@ import React from 'react';
 import TabNavigator from './TabNavigator';
 import {useSelector} from 'react-redux';
 import SignInScreen from '../screens/SignInScreen';
+import {AppStack} from './StackNavigator';
 
 const RootNavigator: React.FC = () => {
   const {authData} = useSelector(
@@ -12,7 +13,7 @@ const RootNavigator: React.FC = () => {
 
   return (
     <NavigationContainer>
-      {authData ? <TabNavigator /> : <SignInScreen />}
+      {authData ? <AppStack /> : <SignInScreen />}
     </NavigationContainer>
   );
 };

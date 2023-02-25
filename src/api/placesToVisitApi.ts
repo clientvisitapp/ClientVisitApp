@@ -9,7 +9,7 @@ const placesToVisitRequest = () =>
         resolve(data);
       } else reject('not successful');
     } catch (error) {
-      reject(error);
+      reject(JSON.stringify(error));
     }
   });
 
