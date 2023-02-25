@@ -8,7 +8,7 @@ const ContactScreenMockData = [
       uri: 'https://coestaticcontent.blob.core.windows.net/visit/Logo circle.png',
     },
     name: 'Chandrasekhara Rao Sasanapuri',
-    phone: '+91 9xxxxxxxxx',
+    phone: '+91 9842768712',
     mail: 'chandrasekhararao.sasanapuri@bestbuy.com',
   },
   {
@@ -75,10 +75,10 @@ const PlacesToVisitScreenMockData = [
 ];
 
 const AgendaMock = [
-  {title: 'Day- 1', date: '21-02-2023'},
-  {title: 'Day- 2', date: '22-02-2023'},
-  {title: 'Day- 3', date: '23-02-2023'},
-  {title: 'Day- 4', date: '24-02-2023'},
+  {title: '01 March', date: '03-01-2023'},
+  {title: '02 March', date: '03-02-2023'},
+  {title: '03 March', date: '03-03-2023'},
+  {title: '04 March', date: '03-04-2023'},
 ];
 
 const response = [
@@ -93,24 +93,119 @@ const response = [
 ];
 
 const ActivityMock = [
-  {
-    header: 'Activity- 1',
-    location: 'Location: BestBuy ODC Floor 4 EB1',
-    date: 'Date: 01 March',
-    time: 'Time: 11:00 am',
-  },
-  {
-    header: 'Activity- 2',
-    location: 'Location: BestBuy ODC Floor 4 EB1',
-    date: 'Date: 01 March',
-    time: 'Time: 11:00 am',
-  },
-  {
-    header: 'Activity- 3',
-    location: 'Location: BestBuy ODC Floor 4 EB1',
-    date: 'Date: 01 March',
-    time: 'Time: 11:00 am',
-  },
+  [
+    {
+      header: 'Travel to TCS Siruseri Office from Chennai Airport',
+      location: 'Location: BestBuy ODC Floor 4 EB1',
+      description:
+        'Flight arriving Chennai - 10.30 AM. Receive at Airport and drive to TCS Siruseri Office. Flight: From Bangalore to Chennai | Indigo flight 6E 904 Leaving 9:25 AM, Arriving 10:30 AM',
+      time: 'Time: 11:00 am',
+    },
+    {
+      header: 'Activity- 2',
+      location: 'Location: BestBuy ODC Floor 4 EB1',
+      description:
+        'Flight arriving Chennai - 10.30 AM. Receive at Airport and drive to TCS Siruseri Office. Flight: From Bangalore to Chennai | Indigo flight 6E 904 Leaving 9:25 AM, Arriving 10:30 AM',
+      time: 'Time: 11:00 am',
+    },
+    {
+      header: 'Activity- 3',
+      location: 'Location: BestBuy ODC Floor 4 EB1',
+      description:
+        'Flight arriving Chennai - 10.30 AM. Receive at Airport and drive to TCS Siruseri Office. Flight: From Bangalore to Chennai | Indigo flight 6E 904 Leaving 9:25 AM, Arriving 10:30 AM',
+      time: 'Time: 11:00 am',
+    },
+    {
+      header: 'Day 4 Activity',
+      location: 'Location: BestBuy ODC Floor 4 EB1',
+      description:
+        'Flight arriving Chennai - 10.30 AM. Receive at Airport and drive to TCS Siruseri Office. Flight: From Bangalore to Chennai | Indigo flight 6E 904 Leaving 9:25 AM, Arriving 10:30 AM',
+      time: 'Time: 11:00 am',
+    },
+    {
+      header: 'Day 4 Activity',
+      location: 'Location: BestBuy ODC Floor 4 EB1',
+      description:
+        'Flight arriving Chennai - 10.30 AM. Receive at Airport and drive to TCS Siruseri Office. Flight: From Bangalore to Chennai | Indigo flight 6E 904 Leaving 9:25 AM, Arriving 10:30 AM',
+      time: 'Time: 11:00 am',
+    },
+    {
+      header: 'Day 4 Activity',
+      location: 'Location: BestBuy ODC Floor 4 EB1',
+      description:
+        'Flight arriving Chennai - 10.30 AM. Receive at Airport and drive to TCS Siruseri Office. Flight: From Bangalore to Chennai | Indigo flight 6E 904 Leaving 9:25 AM, Arriving 10:30 AM',
+      time: 'Time: 11:00 am',
+    },
+  ],
+  [
+    {
+      header: 'Activity',
+      location: 'Location: BestBuy ODC Floor 4 EB1',
+      description:
+        'Flight arriving Chennai - 10.30 AM. Receive at Airport and drive to TCS Siruseri Office. Flight: From Bangalore to Chennai | Indigo flight 6E 904 Leaving 9:25 AM, Arriving 10:30 AM',
+      time: 'Time: 11:00 am',
+    },
+    {
+      header: 'Activity',
+      location: 'Location: BestBuy ODC Floor 4 EB1',
+      description:
+        'Flight arriving Chennai - 10.30 AM. Receive at Airport and drive to TCS Siruseri Office. Flight: From Bangalore to Chennai | Indigo flight 6E 904 Leaving 9:25 AM, Arriving 10:30 AM',
+      time: 'Time: 11:00 am',
+    },
+    {
+      header: 'Activity',
+      location: 'Location: BestBuy ODC Floor 4 EB1',
+      description:
+        'Flight arriving Chennai - 10.30 AM. Receive at Airport and drive to TCS Siruseri Office. Flight: From Bangalore to Chennai | Indigo flight 6E 904 Leaving 9:25 AM, Arriving 10:30 AM',
+      time: 'Time: 11:00 am',
+    },
+  ],
+  [
+    {
+      header: 'Day 3 Activity',
+      location: 'Location: BestBuy ODC Floor 4 EB1',
+      description:
+        'Flight arriving Chennai - 10.30 AM. Receive at Airport and drive to TCS Siruseri Office. Flight: From Bangalore to Chennai | Indigo flight 6E 904 Leaving 9:25 AM, Arriving 10:30 AM',
+      time: 'Time: 11:00 am',
+    },
+    {
+      header: 'Day 3 Activity',
+      location: 'Location: BestBuy ODC Floor 4 EB1',
+      description:
+        'Flight arriving Chennai - 10.30 AM. Receive at Airport and drive to TCS Siruseri Office. Flight: From Bangalore to Chennai | Indigo flight 6E 904 Leaving 9:25 AM, Arriving 10:30 AM',
+      time: 'Time: 11:00 am',
+    },
+    {
+      header: 'Day 3 Activity',
+      location: 'Location: BestBuy ODC Floor 4 EB1',
+      description:
+        'Flight arriving Chennai - 10.30 AM. Receive at Airport and drive to TCS Siruseri Office. Flight: From Bangalore to Chennai | Indigo flight 6E 904 Leaving 9:25 AM, Arriving 10:30 AM',
+      time: 'Time: 11:00 am',
+    },
+  ],
+  [
+    {
+      header: 'Day 4 Activity',
+      location: 'Location: BestBuy ODC Floor 4 EB1',
+      description:
+        'Flight arriving Chennai - 10.30 AM. Receive at Airport and drive to TCS Siruseri Office. Flight: From Bangalore to Chennai | Indigo flight 6E 904 Leaving 9:25 AM, Arriving 10:30 AM',
+      time: 'Time: 11:00 am',
+    },
+    {
+      header: 'Day 4 Activity',
+      location: 'Location: BestBuy ODC Floor 4 EB1',
+      description:
+        'Flight arriving Chennai - 10.30 AM. Receive at Airport and drive to TCS Siruseri Office. Flight: From Bangalore to Chennai | Indigo flight 6E 904 Leaving 9:25 AM, Arriving 10:30 AM',
+      time: 'Time: 11:00 am',
+    },
+    {
+      header: 'Day 4 Activity',
+      location: 'Location: BestBuy ODC Floor 4 EB1',
+      description:
+        'Flight arriving Chennai - 10.30 AM. Receive at Airport and drive to TCS Siruseri Office. Flight: From Bangalore to Chennai | Indigo flight 6E 904 Leaving 9:25 AM, Arriving 10:30 AM',
+      time: 'Time: 11:00 am',
+    },
+  ],
 ];
 
 export {
