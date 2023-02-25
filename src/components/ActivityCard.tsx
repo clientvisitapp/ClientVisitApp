@@ -25,8 +25,8 @@ const ActivityCard: React.FC<ActivityProps> = ({
 
   return (
     <View style={activityCard}>
-      <Text style={timeText}>{time}</Text>
       <Text style={activityText}>{header}</Text>
+      <Text style={timeText}>{time}</Text>
       <Text style={generalText}>{description}</Text>
       <Text style={generalText}>{location}</Text>
       <Text style={generalText}>{team}</Text>
