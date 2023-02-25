@@ -53,7 +53,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: Colors.WHITE,
-    shadowOpacity: 0.3,
+    borderColor: Colors.GREY,
+    borderWidth: 1,
+    shadowOpacity: 0.2,
     shadowOffset: {width: 0 - 0, height: 0 - 0},
   },
   DPIconImage: {

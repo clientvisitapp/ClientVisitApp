@@ -41,6 +41,7 @@ const AgendaScreen: React.FC = () => {
               description={mock.description}
               location={mock.location}
               time={mock.time}
+              team={mock.team}
             />
           );
         })}

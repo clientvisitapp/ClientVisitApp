@@ -100,6 +100,7 @@ const ActivityMock = [
       description:
         'Flight arriving Chennai - 10.30 AM. Receive at Airport and drive to TCS Siruseri Office. Flight: From Bangalore to Chennai | Indigo flight 6E 904 Leaving 9:25 AM, Arriving 10:30 AM',
       time: 'Time: 11:00 am',
+      team: 'TCS Teams - TCS Hosting Team',
     },
     {
       header: 'Activity- 2',
@@ -107,6 +108,7 @@ const ActivityMock = [
       description:
         'Flight arriving Chennai - 10.30 AM. Receive at Airport and drive to TCS Siruseri Office. Flight: From Bangalore to Chennai | Indigo flight 6E 904 Leaving 9:25 AM, Arriving 10:30 AM',
       time: 'Time: 11:00 am',
+      team: 'TCS Teams - TCS Hosting Team',
     },
     {
       header: 'Activity- 3',
@@ -114,6 +116,7 @@ const ActivityMock = [
       description:
         'Flight arriving Chennai - 10.30 AM. Receive at Airport and drive to TCS Siruseri Office. Flight: From Bangalore to Chennai | Indigo flight 6E 904 Leaving 9:25 AM, Arriving 10:30 AM',
       time: 'Time: 11:00 am',
+      team: 'TCS Teams - TCS Hosting Team',
     },
     {
       header: 'Day 4 Activity',
@@ -121,6 +124,7 @@ const ActivityMock = [
       description:
         'Flight arriving Chennai - 10.30 AM. Receive at Airport and drive to TCS Siruseri Office. Flight: From Bangalore to Chennai | Indigo flight 6E 904 Leaving 9:25 AM, Arriving 10:30 AM',
       time: 'Time: 11:00 am',
+      team: 'TCS Teams - TCS Hosting Team',
     },
     {
       header: 'Day 4 Activity',
@@ -128,6 +132,7 @@ const ActivityMock = [
       description:
         'Flight arriving Chennai - 10.30 AM. Receive at Airport and drive to TCS Siruseri Office. Flight: From Bangalore to Chennai | Indigo flight 6E 904 Leaving 9:25 AM, Arriving 10:30 AM',
       time: 'Time: 11:00 am',
+      team: 'TCS Teams - TCS Hosting Team',
     },
     {
       header: 'Day 4 Activity',
@@ -135,6 +140,7 @@ const ActivityMock = [
       description:
         'Flight arriving Chennai - 10.30 AM. Receive at Airport and drive to TCS Siruseri Office. Flight: From Bangalore to Chennai | Indigo flight 6E 904 Leaving 9:25 AM, Arriving 10:30 AM',
       time: 'Time: 11:00 am',
+      team: 'TCS Teams - TCS Hosting Team',
     },
   ],
   [
@@ -144,6 +150,7 @@ const ActivityMock = [
       description:
         'Flight arriving Chennai - 10.30 AM. Receive at Airport and drive to TCS Siruseri Office. Flight: From Bangalore to Chennai | Indigo flight 6E 904 Leaving 9:25 AM, Arriving 10:30 AM',
       time: 'Time: 11:00 am',
+      team: 'TCS Teams - TCS Hosting Team',
     },
     {
       header: 'Activity',
@@ -151,6 +158,7 @@ const ActivityMock = [
       description:
         'Flight arriving Chennai - 10.30 AM. Receive at Airport and drive to TCS Siruseri Office. Flight: From Bangalore to Chennai | Indigo flight 6E 904 Leaving 9:25 AM, Arriving 10:30 AM',
       time: 'Time: 11:00 am',
+      team: 'TCS Teams - TCS Hosting Team',
     },
     {
       header: 'Activity',
@@ -158,6 +166,7 @@ const ActivityMock = [
       description:
         'Flight arriving Chennai - 10.30 AM. Receive at Airport and drive to TCS Siruseri Office. Flight: From Bangalore to Chennai | Indigo flight 6E 904 Leaving 9:25 AM, Arriving 10:30 AM',
       time: 'Time: 11:00 am',
+      team: 'TCS Teams - TCS Hosting Team',
     },
   ],
   [
@@ -167,6 +176,7 @@ const ActivityMock = [
       description:
         'Flight arriving Chennai - 10.30 AM. Receive at Airport and drive to TCS Siruseri Office. Flight: From Bangalore to Chennai | Indigo flight 6E 904 Leaving 9:25 AM, Arriving 10:30 AM',
       time: 'Time: 11:00 am',
+      team: 'TCS Teams - TCS Hosting Team',
     },
     {
       header: 'Day 3 Activity',
@@ -174,6 +184,7 @@ const ActivityMock = [
       description:
         'Flight arriving Chennai - 10.30 AM. Receive at Airport and drive to TCS Siruseri Office. Flight: From Bangalore to Chennai | Indigo flight 6E 904 Leaving 9:25 AM, Arriving 10:30 AM',
       time: 'Time: 11:00 am',
+      team: 'TCS Teams - TCS Hosting Team',
     },
     {
       header: 'Day 3 Activity',
@@ -181,6 +192,7 @@ const ActivityMock = [
       description:
         'Flight arriving Chennai - 10.30 AM. Receive at Airport and drive to TCS Siruseri Office. Flight: From Bangalore to Chennai | Indigo flight 6E 904 Leaving 9:25 AM, Arriving 10:30 AM',
       time: 'Time: 11:00 am',
+      team: 'TCS Teams - TCS Hosting Team',
     },
   ],
   [
@@ -190,6 +202,7 @@ const ActivityMock = [
       description:
         'Flight arriving Chennai - 10.30 AM. Receive at Airport and drive to TCS Siruseri Office. Flight: From Bangalore to Chennai | Indigo flight 6E 904 Leaving 9:25 AM, Arriving 10:30 AM',
       time: 'Time: 11:00 am',
+      team: 'TCS Teams - TCS Hosting Team',
     },
     {
       header: 'Day 4 Activity',
@@ -197,6 +210,7 @@ const ActivityMock = [
       description:
         'Flight arriving Chennai - 10.30 AM. Receive at Airport and drive to TCS Siruseri Office. Flight: From Bangalore to Chennai | Indigo flight 6E 904 Leaving 9:25 AM, Arriving 10:30 AM',
       time: 'Time: 11:00 am',
+      team: 'TCS Teams - TCS Hosting Team',
     },
     {
       header: 'Day 4 Activity',
@@ -204,6 +218,7 @@ const ActivityMock = [
       description:
         'Flight arriving Chennai - 10.30 AM. Receive at Airport and drive to TCS Siruseri Office. Flight: From Bangalore to Chennai | Indigo flight 6E 904 Leaving 9:25 AM, Arriving 10:30 AM',
       time: 'Time: 11:00 am',
+      team: 'TCS Teams - TCS Hosting Team',
     },
   ],
 ];

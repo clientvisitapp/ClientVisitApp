@@ -6,6 +6,7 @@ import PlacesToVisitIcon from '../assets/icons/PlacesToVisitIcon';
 import {Image, StyleSheet, TouchableOpacity, View} from 'react-native';
 import Colors from '../constants/Colors';
 import Strings from '../constants/Strings';
+import ContactIcon from '../assets/icons/ContactIcon';
 
 type HomeScreenCardProps = {
   title: string;
@@ -18,20 +19,21 @@ const HomeScreenCard: React.FC<HomeScreenCardProps> = ({
   imageSource,
   onPress,
 }) => {
-  const {heading, iconStyle, text, cardView} = styles;
-  const {AGENDA} = Strings;
+  const {heading, iconStyle, text} = styles;
+  const {AGENDA, PLACESTOVISIT} = Strings;
 
   return (
     <TouchableOpacity onPress={onPress}>
       <View style={heading}>
         {title === AGENDA ? (
           <AgendaIcon style={iconStyle} />
-        ) : (
+        ) : title === PLACESTOVISIT ? (
           <PlacesToVisitIcon style={iconStyle} />
+        ) : (
+          <ContactIcon style={iconStyle} />
         )}
         <Text style={text}>{title}</Text>
       </View>
-      <Image source={imageSource} style={cardView} />
     </TouchableOpacity>
   );
 };
@@ -40,24 +42,26 @@ const styles = StyleSheet.create({
   heading: {
     flexDirection: 'row',
     alignItems: 'center',
-    height: 64,
-    marginBottom: 8,
+    width: 360,
+    height: 90,
+    borderRadius: 4,
+    marginLeft: 16,
+    marginVertical: 16,
     backgroundColor: Colors.WHITE,
+    borderColor: Colors.GREY,
+    borderWidth: 1,
+    shadowOpacity: 0.2,
+    shadowOffset: {width: 0 - 0, height: 0 - 0},
   },
   text: {
+    width: 207,
+    height: 30,
     fontWeight: '700',
-    fontSize: 16,
-    lineHeight: 20,
-    marginLeft: 9.5,
+    fontSize: 24,
+    lineHeight: 30,
+    marginLeft: 29,
   },
-  cardView: {
-    height: 179,
-    width: 357,
-    borderRadius: 4,
-    marginBottom: 8,
-    marginLeft: 17,
-  },
-  iconStyle: {marginLeft: 15},
+  iconStyle: {marginLeft: 19},
 });
 
 export default HomeScreenCard;
