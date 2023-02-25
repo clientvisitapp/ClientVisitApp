@@ -1,37 +1,48 @@
 import React from 'react';
-import {Image, StyleSheet, View} from 'react-native';
+import {
+  FlatList,
+  Image,
+  SectionList,
+  StyleSheet,
+  View,
+  TouchableOpacity,
+  Linking,
+} from 'react-native';
 import Colors from '../constants/Colors';
 
 import {CustomText as Text} from './CustomText';
 
 type PlacesToVisitScreenCardProps = {
-  heading: string;
   imageSource: any;
+  siteSource: any;
+  attraction: string;
 };
 
 const PlacesToVisitScreenCard: React.FC<PlacesToVisitScreenCardProps> = ({
-  heading,
   imageSource,
+  siteSource,
+  attraction,
 }) => {
   const {headingStyle, text, cardView} = styles;
+  const handleOpenWithLinking = () => {
+    Linking.openURL(siteSource);
+  };
 
   return (
-    <>
-      <View style={headingStyle}>
-        <Text style={text}>{heading}</Text>
-      </View>
+    <TouchableOpacity onPress={handleOpenWithLinking}>
       <Image source={imageSource} style={cardView} />
-    </>
+      <Text style={text}>{attraction}</Text>
+    </TouchableOpacity>
   );
 };
 
 const styles = StyleSheet.create({
   headingStyle: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    height: 50,
-    marginTop: 12,
-    marginBottom: 8,
+    height: 70,
+    padding: 16,
+    fontWeight: '700',
+    fontSize: 16,
+    lineHeight: 20,
     backgroundColor: Colors.WHITE,
   },
   text: {
@@ -42,9 +53,8 @@ const styles = StyleSheet.create({
   },
   cardView: {
     height: 171,
-    width: 357,
     borderRadius: 4,
-    marginBottom: 14,
+    marginVertical: 14,
     marginHorizontal: 16,
   },
 });

@@ -5,7 +5,10 @@ import PlacesToVisitScreenCard from '../components/PlacesToVisitScreenCard';
 import {Image, ScrollView, StyleSheet, View} from 'react-native';
 import Strings from '../constants/Strings';
 import PlacesToVisitIcon from '../assets/icons/PlacesToVisitIcon';
-import {PlacesToVisitScreenMockData} from '../mocks/mockData';
+import {
+  ChennaiPlacesToVisitScreenMockData,
+  KochiPlacesToVisitScreenMockData,
+} from '../mocks/mockData';
 import {useDispatch} from 'react-redux';
 import {AppDispatch} from '../redux/store';
 import {getPlacesToVisit} from '../redux/slices/placesToVisitSlice';
@@ -13,7 +16,7 @@ import {getPlacesToVisit} from '../redux/slices/placesToVisitSlice';
 const {GREY, WHITE} = Colors;
 
 const PlacesToVisitScreen: React.FC = () => {
-  const {headerStyle, text, iconStyle, cardView, chennaiText} = styles;
+  const {headingStyle, text, iconStyle, chennaiText} = styles;
   const {CHENNAI, PLACESTOVISIT} = Strings;
   const dispatch = useDispatch<AppDispatch>();
 
@@ -22,25 +25,37 @@ const PlacesToVisitScreen: React.FC = () => {
   }, []);
 
   return (
-    <View style={{backgroundColor: GREY}}>
-      <View style={headerStyle}>
-        <PlacesToVisitIcon style={iconStyle} />
-        <Text style={text}>{PLACESTOVISIT}</Text>
-      </View>
+    <View style={{backgroundColor: WHITE}}>
       <ScrollView>
         <Image
           source={{
             uri: 'https://coestaticcontent.blob.core.windows.net/visit/chennai.jpg',
           }}
-          style={cardView}
+          style={{height: 159}}
         />
-        <Text style={chennaiText}>{CHENNAI}</Text>
-        {PlacesToVisitScreenMockData.map((mock, index) => {
+        <View style={headingStyle}>
+          <Text style={text}>Chennai</Text>
+        </View>
+        {ChennaiPlacesToVisitScreenMockData.map((mock, index) => {
           return (
             <PlacesToVisitScreenCard
               key={index}
-              heading={mock.heading}
               imageSource={mock.imageSource}
+              siteSource={mock.siteSource}
+              attraction={mock.attraction}
+            />
+          );
+        })}
+        <View style={headingStyle}>
+          <Text style={text}>Kochi</Text>
+        </View>
+        {KochiPlacesToVisitScreenMockData.map((mock, index) => {
+          return (
+            <PlacesToVisitScreenCard
+              key={index}
+              imageSource={mock.imageSource}
+              siteSource={mock.siteSource}
+              attraction={mock.attraction}
             />
           );
         })}
@@ -50,6 +65,14 @@ const PlacesToVisitScreen: React.FC = () => {
 };
 
 const styles = StyleSheet.create({
+  headingStyle: {
+    height: 52,
+    padding: 16,
+    fontWeight: '700',
+    fontSize: 16,
+    lineHeight: 20,
+    backgroundColor: Colors.WHITE,
+  },
   headerStyle: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -65,14 +88,6 @@ const styles = StyleSheet.create({
   },
   iconStyle: {
     marginLeft: 15,
-  },
-  cardView: {
-    height: 171,
-    width: 357,
-    borderRadius: 4,
-    marginTop: 11,
-    marginBottom: 6,
-    marginHorizontal: 16,
   },
   chennaiText: {
     fontWeight: '700',

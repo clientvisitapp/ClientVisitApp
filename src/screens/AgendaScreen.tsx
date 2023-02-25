@@ -15,7 +15,11 @@ const AgendaScreen: React.FC = () => {
   const [clickedIndex, setClickedIndex] = useState(0);
 
   return (
-    <View style={{backgroundColor: Colors.WHITE, flex: 1}}>
+    <View
+      style={{
+        backgroundColor: Colors.WHITE,
+        flex: 1,
+      }}>
       <ScrollView
         style={{flexDirection: 'row'}}
         horizontal={true}

@@ -53,24 +53,37 @@ const ContactScreenMockData = [
   },
 ];
 
-const PlacesToVisitScreenMockData = [
+const ChennaiPlacesToVisitScreenMockData = [
   {
-    heading: `1. ${PLACE}`,
     imageSource: {
       uri: 'https://coestaticcontent.blob.core.windows.net/visit/shore-temple-640319518-5c27ce2146e0fb0001e9184b.jpeg',
     },
+    siteSource: 'https://en.wikipedia.org/wiki/Mamallapuram',
+    attraction: 'Mahabalipuram',
   },
   {
-    heading: `2. ${PLACE}`,
     imageSource: {
       uri: 'https://coestaticcontent.blob.core.windows.net/visit/places-to-visit-in-kochi.jpeg',
     },
+    siteSource: 'https://en.wikipedia.org/wiki/Mattancherry_Palace',
+    attraction: 'Palace',
   },
+];
+
+const KochiPlacesToVisitScreenMockData = [
   {
-    heading: `3. ${PLACE}`,
     imageSource: {
       uri: 'https://coestaticcontent.blob.core.windows.net/visit/shore-temple-640319518-5c27ce2146e0fb0001e9184b.jpeg',
     },
+    siteSource: 'https://en.wikipedia.org/wiki/Mamallapuram',
+    attraction: 'Mahabalipuram',
+  },
+  {
+    imageSource: {
+      uri: 'https://coestaticcontent.blob.core.windows.net/visit/places-to-visit-in-kochi.jpeg',
+    },
+    siteSource: 'https://en.wikipedia.org/wiki/Mattancherry_Palace',
+    attraction: 'Palace',
   },
 ];
 
@@ -225,7 +238,8 @@ const ActivityMock = [
 
 export {
   ContactScreenMockData,
-  PlacesToVisitScreenMockData,
+  ChennaiPlacesToVisitScreenMockData,
+  KochiPlacesToVisitScreenMockData,
   AgendaMock,
   ActivityMock,
 };
