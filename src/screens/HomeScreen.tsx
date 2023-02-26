@@ -71,7 +71,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({navigation}) => {
 const styles = StyleSheet.create({
   headerImage: {
     width: '100%',
-    height: '40%',
+    height: 200,
   },
   header: {
     marginLeft: 16,
