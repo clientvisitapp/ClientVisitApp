@@ -87,9 +87,10 @@ const SignInScreen = () => {
   return (
     <View style={loginContainer}>
       <KeyboardAvoidingView
-        behavior={Platform.OS === 'ios' ? 'position' : 'undefined'}>
-          <View style={{padding: 16,
-        justifyContent: "flex-end",}}></View>
+        behavior={Platform.OS === 'ios' ? 'position' : 'undefined'}
+          style={{padding: 16,
+        justifyContent: "flex-end",}}>
+        <View>
         <Image source={require('../assets/LoginIcon.png')} style={iconStyle} />
         <Text style={loginHeader}>Sign In to Odyssey</Text>
         <TextInput
