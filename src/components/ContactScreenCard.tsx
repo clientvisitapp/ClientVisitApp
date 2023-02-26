@@ -27,7 +27,17 @@ const ContactScreenCard: React.FC<ContactScreenProps> = ({
   } = styles;
 
   return (
-    <View style={card}>
+    <View
+      style={[
+        card,
+        Platform.select({
+          android: {elevation: 5},
+          ios: {
+            shadowOpacity: 0.2,
+            shadowOffset: {width: 0 - 0, height: 0 - 0},
+          },
+        }),
+      ]}>
       <Image source={{uri: imageSource}} style={DPIconImage} />
       <View style={detailsCard}>
         <Text style={nameTextStyle}>{nameText}</Text>
@@ -53,8 +63,6 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.WHITE,
     borderColor: Colors.GREY,
     borderWidth: 1,
-    shadowOpacity: 0.2,
-    shadowOffset: {width: 0 - 0, height: 0 - 0},
   },
   DPIconImage: {
     width: 95,

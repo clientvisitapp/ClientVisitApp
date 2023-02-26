@@ -15,7 +15,7 @@ type ActivityProps = {
 const {WHITE, GREY} = Colors;
 
 const androidStyle = {
-  elevation: 10,
+  elevation: 5,
 };
 const iosStyle = {
   shadowColor: '#171717',

@@ -3,7 +3,13 @@ import React from 'react';
 import {CustomText as Text} from './CustomText';
 import AgendaIcon from '../assets/icons/AgendaIcon';
 import PlacesToVisitIcon from '../assets/icons/PlacesToVisitIcon';
-import {Image, StyleSheet, TouchableOpacity, View} from 'react-native';
+import {
+  Image,
+  Platform,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import Colors from '../constants/Colors';
 import Strings from '../constants/Strings';
 import ContactIcon from '../assets/icons/ContactIcon';
@@ -24,7 +30,17 @@ const HomeScreenCard: React.FC<HomeScreenCardProps> = ({
 
   return (
     <TouchableOpacity onPress={onPress}>
-      <View style={heading}>
+      <View
+        style={[
+          heading,
+          Platform.select({
+            android: {elevation: 5},
+            ios: {
+              shadowOpacity: 0.2,
+              shadowOffset: {width: 0 - 0, height: 0 - 0},
+            },
+          }),
+        ]}>
         {title === AGENDA ? (
           <AgendaIcon style={iconStyle} />
         ) : title === PLACESTOVISIT ? (
@@ -49,8 +65,6 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.WHITE,
     borderColor: Colors.GREY,
     borderWidth: 1,
-    shadowOpacity: 0.2,
-    shadowOffset: {width: 0 - 0, height: 0 - 0},
   },
   text: {
     width: 207,
