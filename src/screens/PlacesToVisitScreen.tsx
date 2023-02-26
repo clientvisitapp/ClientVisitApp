@@ -111,35 +111,12 @@ const PlacesToVisitScreen: React.FC = () => {
 const styles = StyleSheet.create({
   headingStyle: {
     height: 52,
-    paddingHorizontal: 16,
-    paddingTop: 25,
-    fontWeight: '700',
-    fontSize: 16,
-    lineHeight: 20,
-    backgroundColor: Colors.WHITE,
-  },
-  headerStyle: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    height: 64,
-    width: 390,
-    backgroundColor: WHITE,
+    padding: 16,
   },
   text: {
     fontWeight: '700',
-    fontSize: 16,
+    fontSize: 20,
     lineHeight: 20,
-    marginLeft: 9,
-  },
-  iconStyle: {
-    marginLeft: 15,
-  },
-  chennaiText: {
-    fontWeight: '700',
-    fontSize: 16,
-    lineHeight: 20,
-    width: 357,
-    marginLeft: 16,
   },
 });
 
