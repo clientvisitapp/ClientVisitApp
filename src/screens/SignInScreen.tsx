@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React, {useEffect, useState} from 'react';
 import {
   StyleSheet,
@@ -88,6 +89,8 @@ const SignInScreen = () => {
     <View style={loginContainer}>
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'position' : 'undefined'}>
+          <View style={{padding: 16,
+        justifyContent: "flex-end",}}>
         <Image
           source={{
             uri: 'https://coestaticcontent.blob.core.windows.net/visit/Group 4.png',
@@ -139,6 +142,7 @@ const SignInScreen = () => {
           disabled={!isValueEntered}>
           <Text style={buttonText}>Sign In</Text>
         </TouchableOpacity>
+        </View>
       </KeyboardAvoidingView>
     </View>
   );
@@ -166,7 +170,7 @@ const styles = StyleSheet.create({
     backgroundColor: BLUE,
     height: 50,
     marginHorizontal: 15,
-    marginTop: 3,
+    marginTop: 32,
     borderWidth: 0.5,
     borderRadius: 4,
     alignItems: 'center',
@@ -180,10 +184,11 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 20,
     textAlign: 'center',
+    fontSize: 20
   },
   iconStyle: {
     alignSelf: 'center',
-    marginTop: 170,
+    marginTop: 150,
     marginBottom: 25,
     height: 100,
     width: 100,
