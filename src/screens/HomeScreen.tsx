@@ -76,12 +76,12 @@ const styles = StyleSheet.create({
   },
   header: {
     marginLeft: 16,
-    marginTop: 17,
-    marginBottom: 8,
+    marginTop: 32,
+    marginBottom: 12,
   },
   text: {
     fontWeight: '700',
-    fontSize: 36,
+    fontSize: 32,
     lineHeight: 44,
   },
 });

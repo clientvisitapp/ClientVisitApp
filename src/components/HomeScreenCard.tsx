@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     height: 90,
     borderRadius: 4,
     marginHorizontal: 16,
-    marginVertical: 16,
+    marginVertical: 12,
     backgroundColor: Colors.WHITE,
     borderColor: Colors.GREY,
     borderWidth: 1,
