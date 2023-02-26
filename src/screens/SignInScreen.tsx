@@ -88,12 +88,7 @@ const SignInScreen = () => {
     <View style={loginContainer}>
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
-        <Image
-          source={{
-            uri: 'https://coestaticcontent.blob.core.windows.net/visit/Group 4.png',
-          }}
-          style={iconStyle}
-        />
+        <Image source={require('../assets/LoginIcon.png')} style={iconStyle} />
         <Text style={loginHeader}>Sign In to Odyssey</Text>
         <TextInput
           style={[

@@ -35,9 +35,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({navigation}) => {
     <ScrollView style={{backgroundColor: WHITE, flex: 1}}>
       <Image
         style={headerImage}
-        source={{
-          uri: 'https://coestaticcontent.blob.core.windows.net/visit/10 years banner.png',
-        }}
+        source={require('../assets/HomeScreenHeaderImage.png')}
       />
       <View style={header}>
         <Text style={text}>
@@ -72,7 +70,8 @@ const HomeScreen: React.FC<HomeScreenProps> = ({navigation}) => {
 
 const styles = StyleSheet.create({
   headerImage: {
-    height: 200,
+    width: '100%',
+    height: '40%',
   },
   header: {
     marginLeft: 16,
