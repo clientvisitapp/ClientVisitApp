@@ -1,5 +1,5 @@
 import React from 'react';
-import {Image, Linking, StyleSheet, TouchableOpacity, View} from 'react-native';
+import {Image, Linking, StyleSheet, View} from 'react-native';
 import Colors from '../constants/Colors';
 
 import {CustomText as Text} from './CustomText';
@@ -64,6 +64,7 @@ const styles = StyleSheet.create({
   detailsCard: {
     paddingLeft: 16,
     backgroundColor: Colors.WHITE,
+    flexShrink: 1,
   },
   nameTextStyle: {
     marginTop: 16,
@@ -78,7 +79,6 @@ const styles = StyleSheet.create({
     textDecorationLine: 'underline',
   },
   mailTextStyle: {
-    width: 218,
     marginBottom: 16,
     fontWeight: '400',
     fontSize: 14,

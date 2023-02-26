@@ -52,7 +52,6 @@ const AgendaScreenCard: React.FC<AgendaProps> = ({
 
   const momentObject = moment(item.date, 'MM-DD-YYYY');
   const formattedDate = moment(momentObject).format('DD MMMM');
-  console.log(formattedDate);
   return (
     <TouchableOpacity
       style={[

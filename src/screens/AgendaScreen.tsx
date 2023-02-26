@@ -54,6 +54,10 @@ const AgendaScreen: React.FC = () => {
         horizontal={true}
         showsHorizontalScrollIndicator={false}>
         {agendas.map((item, index) => {
+          const currentDate = new Date();
+          item?.date?.substring(3, 5) === currentDate.getDate() &&
+            setClickedIndex(index);
+
           return (
             <AgendaScreenCard
               key={index}

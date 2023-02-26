@@ -6,6 +6,8 @@ import {
   TouchableOpacity,
   Image,
   ActivityIndicator,
+  KeyboardAvoidingView,
+  Platform,
 } from 'react-native';
 import {CustomText as Text} from '../components/CustomText';
 import {useDispatch, useSelector} from 'react-redux';
@@ -84,57 +86,60 @@ const SignInScreen = () => {
 
   return (
     <View style={loginContainer}>
-      <Image
-        source={{
-          uri: 'https://coestaticcontent.blob.core.windows.net/visit/Group 4.png',
-        }}
-        style={iconStyle}
-      />
-      <Text style={loginHeader}>Sign In to Odyssey</Text>
-      <TextInput
-        style={[
-          inputStyle,
-          {fontWeight: formData[NAME].value.length === 0 ? '600' : 'normal'},
-        ]}
-        placeholder={PLACEHOLDER_NAME}
-        placeholderTextColor={BLACK}
-        value={formData[NAME].value}
-        onChangeText={text => {
-          dispatch(clearAuthError());
-          setFormData(prev => {
-            return {...prev, [NAME]: {...prev[NAME], value: text}};
-          });
-        }}
-        onFocus={() => dispatch(clearAuthError())}
-      />
-      <TextInput
-        style={[
-          inputStyle,
-          {
-            fontWeight:
-              formData[PASSWORD].value.length === 0 ? '600' : 'normal',
-            marginBottom: 10,
-          },
-        ]}
-        placeholder={PASSWORD}
-        placeholderTextColor={BLACK}
-        value={formData[PASSWORD].value}
-        onChangeText={text => {
-          dispatch(clearAuthError());
-          setFormData(prev => {
-            return {...prev, [PASSWORD]: {...prev[PASSWORD], value: text}};
-          });
-        }}
-        secureTextEntry={true}
-        onFocus={() => dispatch(clearAuthError())}
-      />
-      {authError && <Text style={errorText}>{SOMETHING_WENT_WRONG}</Text>}
-      <TouchableOpacity
-        style={buttonStyle}
-        onPress={onPressLogin}
-        disabled={!isValueEntered}>
-        <Text style={buttonText}>Sign In</Text>
-      </TouchableOpacity>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+        <Image
+          source={{
+            uri: 'https://coestaticcontent.blob.core.windows.net/visit/Group 4.png',
+          }}
+          style={iconStyle}
+        />
+        <Text style={loginHeader}>Sign In to Odyssey</Text>
+        <TextInput
+          style={[
+            inputStyle,
+            {fontWeight: formData[NAME].value.length === 0 ? '600' : 'normal'},
+          ]}
+          placeholder={PLACEHOLDER_NAME}
+          placeholderTextColor={BLACK}
+          value={formData[NAME].value}
+          onChangeText={text => {
+            dispatch(clearAuthError());
+            setFormData(prev => {
+              return {...prev, [NAME]: {...prev[NAME], value: text}};
+            });
+          }}
+          onFocus={() => dispatch(clearAuthError())}
+        />
+        <TextInput
+          style={[
+            inputStyle,
+            {
+              fontWeight:
+                formData[PASSWORD].value.length === 0 ? '600' : 'normal',
+              marginBottom: 10,
+            },
+          ]}
+          placeholder={PASSWORD}
+          placeholderTextColor={BLACK}
+          value={formData[PASSWORD].value}
+          onChangeText={text => {
+            dispatch(clearAuthError());
+            setFormData(prev => {
+              return {...prev, [PASSWORD]: {...prev[PASSWORD], value: text}};
+            });
+          }}
+          secureTextEntry={true}
+          onFocus={() => dispatch(clearAuthError())}
+        />
+        {authError && <Text style={errorText}>{SOMETHING_WENT_WRONG}</Text>}
+        <TouchableOpacity
+          style={buttonStyle}
+          onPress={onPressLogin}
+          disabled={!isValueEntered}>
+          <Text style={buttonText}>Sign In</Text>
+        </TouchableOpacity>
+      </KeyboardAvoidingView>
     </View>
   );
 };
