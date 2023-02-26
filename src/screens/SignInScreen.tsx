@@ -87,7 +87,7 @@ const SignInScreen = () => {
   return (
     <View style={loginContainer}>
       <KeyboardAvoidingView
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+        behavior={Platform.OS === 'ios' ? 'position' : 'undefined'}>
         <Image
           source={{
             uri: 'https://coestaticcontent.blob.core.windows.net/visit/Group 4.png',
