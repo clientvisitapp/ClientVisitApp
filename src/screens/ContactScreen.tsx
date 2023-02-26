@@ -23,7 +23,7 @@ const ContactScreen: React.FC = () => {
     dispatch(getContacts());
   }, []);
 
-  if (loader.isLoading) {
+  if (loader?.isLoading) {
     return (
       <ActivityIndicator
         color={BLUE}

@@ -24,7 +24,7 @@ export const signIn = createAsyncThunk(
       return data;
     } catch (error) {
       dispatch(completed());
-      return rejectWithValue(error);
+      return rejectWithValue(JSON.stringify(error));
     }
   },
 );

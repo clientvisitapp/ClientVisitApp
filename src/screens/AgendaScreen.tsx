@@ -22,13 +22,16 @@ const AgendaScreen: React.FC = () => {
     agenda: {agendas},
     loader: {isLoading},
   } = useSelector(
-    (state: {agenda: {agendas: agendaType[]}; loader: {isLoading: boolean}}) =>
+    (state: {agenda: {agendas: agendaType}; loader: {isLoading: boolean}}) =>
       state,
   );
-  const [clickedIndex, setClickedIndex] = useState(0);
-  const {loader} = useSelector(
-    (state: {loader: {isLoading: boolean}}) => state,
-  );
+  const currentDate = new Date().getDate();
+  let currentDateIndex = 0;
+  agendas?.forEach((item, index) => {
+    item?.date?.substring(3, 5) === currentDate && (currentDateIndex = index);
+  });
+  const [clickedIndex, setClickedIndex] = useState(currentDateIndex);
+
   useEffect(() => {
     dispatch(getAgenda());
   }, []);
@@ -53,11 +56,7 @@ const AgendaScreen: React.FC = () => {
         style={{flexDirection: 'row', alignSelf: 'center'}}
         horizontal={true}
         showsHorizontalScrollIndicator={false}>
-        {agendas.map((item, index) => {
-          const currentDate = new Date();
-          item?.date?.substring(3, 5) === currentDate.getDate() &&
-            setClickedIndex(index);
-
+        {agendas?.map((item, index) => {
           return (
             <AgendaScreenCard
               key={index}

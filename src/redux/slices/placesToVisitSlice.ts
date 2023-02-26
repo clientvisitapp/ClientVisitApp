@@ -21,7 +21,7 @@ export const getPlacesToVisit = createAsyncThunk(
       return data;
     } catch (error) {
       dispatch(completed());
-      return rejectWithValue(error);
+      return rejectWithValue(JSON.stringify(error));
     }
   },
 );
@@ -35,7 +35,7 @@ const placesToVisitSlice = createSlice({
       .addCase(getPlacesToVisit.fulfilled, (state, action) => {
         const mappedPlacesToVisit = {};
         const placesToVisitResult: placesToVisitType[] = [];
-        const formattedPlacesToVisit = action.payload.map(item => {
+        const formattedPlacesToVisit = action?.payload?.map(item => {
           return {
             location: item.location,
             placeDetail: {
@@ -45,7 +45,7 @@ const placesToVisitSlice = createSlice({
             },
           };
         });
-        formattedPlacesToVisit.map((item: formattedPlacesToVisitType) => {
+        formattedPlacesToVisit?.map((item: formattedPlacesToVisitType) => {
           if (mappedPlacesToVisit[item.location]) {
             mappedPlacesToVisit[item.location] = {
               ...mappedPlacesToVisit[item.location],
@@ -61,7 +61,7 @@ const placesToVisitSlice = createSlice({
             };
           }
         });
-        Object.keys(mappedPlacesToVisit).map(item => {
+        Object.keys(mappedPlacesToVisit)?.map(item => {
           placesToVisitResult.push(mappedPlacesToVisit[item]);
         });
         state.placesToVisitDetails = placesToVisitResult;

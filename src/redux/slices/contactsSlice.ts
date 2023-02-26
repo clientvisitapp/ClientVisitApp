@@ -22,7 +22,7 @@ export const getContacts = createAsyncThunk(
       return data;
     } catch (error) {
       dispatch(completed());
-      return rejectWithValue(error);
+      return rejectWithValue(JSON.stringify(error));
     }
   },
 );
@@ -34,7 +34,7 @@ const contactsSlice = createSlice({
   extraReducers(builder) {
     builder
       .addCase(getContacts.fulfilled, (state, action) => {
-        const contactsResult = action.payload.map(item => ({
+        const contactsResult = action?.payload?.map(item => ({
           imageSource: item.imageUrl,
           name: item.name,
           phone: item.phoneNumber,

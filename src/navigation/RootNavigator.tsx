@@ -11,8 +11,7 @@ import {clearAuthData, updateAuthData} from '../redux/slices/authSlice';
 const RootNavigator: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
   const {authData} = useSelector(
-    (state: {auth: {authData: null | {name: string; password: string}}}) =>
-      state.auth,
+    (state: {auth: {authData: null | object}}) => state.auth,
   );
   const [isLoading, setIsLoading] = useState(true);
 
@@ -33,7 +32,7 @@ const RootNavigator: React.FC = () => {
 
   setTimeout(() => {
     setIsLoading(false);
-  }, 100);
+  }, 150);
 
   if (isLoading) return null;
 

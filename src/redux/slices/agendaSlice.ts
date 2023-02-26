@@ -21,7 +21,7 @@ export const getAgenda = createAsyncThunk(
       return data;
     } catch (error) {
       dispatch(completed());
-      return rejectWithValue(error);
+      return rejectWithValue(JSON.stringify(error));
     }
   },
 );
@@ -35,7 +35,7 @@ const agendaSlice = createSlice({
       .addCase(getAgenda.fulfilled, (state, action) => {
         const mappedAgenda = {};
         const agendaResult: agendaType = [];
-        const formattedResponse = action.payload.map(item => ({
+        const formattedResponse = action?.payload?.map(item => ({
           date: item.dateOfVisit,
           activityDetail: {
             title: item.agendaActivityTitle,
@@ -45,7 +45,7 @@ const agendaSlice = createSlice({
             team: item.agendaHostingDetails,
           },
         }));
-        formattedResponse.map((item: formattedAgenda) => {
+        formattedResponse?.map((item: formattedAgenda) => {
           if (mappedAgenda[item.date]) {
             mappedAgenda[item.date] = {
               ...mappedAgenda[item.date],
@@ -61,7 +61,7 @@ const agendaSlice = createSlice({
             };
           }
         });
-        Object.keys(mappedAgenda).map(item => {
+        Object.keys(mappedAgenda)?.map(item => {
           agendaResult.push(mappedAgenda[item]);
         });
         state.agendas = agendaResult;

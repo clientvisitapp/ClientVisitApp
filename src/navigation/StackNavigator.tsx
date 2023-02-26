@@ -101,17 +101,17 @@ const AppStack: React.FC = () => {
       <Screen
         name={ROUTE_AGENDA}
         component={AgendaScreen}
-        options={{headerTitle: AGENDA, headerTitleAlign: 'left'}}
+        options={{headerTitle: AGENDA, headerTitleAlign: 'center'}}
       />
       <Screen
         name={ROUTE_PLACESTOVISIT}
         component={PlacesToVisitScreen}
-        options={{headerTitle: PLACESTOVISIT, headerTitleAlign: 'left'}}
+        options={{headerTitle: PLACESTOVISIT, headerTitleAlign: 'center'}}
       />
       <Screen
         name={ROUTE_CONTACT}
         component={ContactScreen}
-        options={{headerTitle: CONTACTS, headerTitleAlign: 'left'}}
+        options={{headerTitle: CONTACTS, headerTitleAlign: 'center'}}
       />
     </Navigator>
   );

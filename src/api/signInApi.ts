@@ -21,10 +21,8 @@ const signInRequest = (value: loginCredentials) =>
       if (response.status === 200) {
         const data = await response.json();
         resolve(data);
-      } else reject('not successful');
-      // } else resolve({name: 'as', password: 'vd'});
+      } else reject(JSON.stringify('not successful'));
     } catch (error) {
-      // resolve({name: 'as', password: 'vd'});
       reject(JSON.stringify(error));
     }
   });

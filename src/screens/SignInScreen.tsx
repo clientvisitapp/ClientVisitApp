@@ -48,33 +48,18 @@ const SignInScreen = () => {
   });
   const isValueEntered = formData[NAME].value && formData[PASSWORD].value;
 
-  // useEffect(() => {
-  //   checkLocalStorage();
-  // }, []);
-
-  // const checkLocalStorage = async () => {
-  //   try {
-  //     const authDataSerialized = await AsyncStorage.getItem('@AuthData');
-  //     if (authDataSerialized) {
-  //       dispatch(updateAuthData(JSON.parse(authDataSerialized)));
-  //     }
-  //   } catch (error) {
-  //     console.log('from local storage', error);
-  //   }
-  // };
-
   const onPressLogin = () => {
     formData[NAME].value &&
       formData[PASSWORD].value &&
       dispatch(
         signIn({
-          username: formData[NAME].value,
-          password: formData[PASSWORD].value,
+          username: formData[NAME]?.value,
+          password: formData[PASSWORD]?.value,
         }),
       );
   };
 
-  if (loader.isLoading) {
+  if (loader?.isLoading) {
     return (
       <ActivityIndicator
         color={BLUE}
