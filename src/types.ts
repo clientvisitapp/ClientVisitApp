@@ -26,6 +26,8 @@ export type formattedAgenda = {
 export type placesToVisitType = {
   location: string;
   placeDetails: {
+    attraction: string;
+    siteSource: any;
     heading: string;
     imageSource: string;
   }[];
