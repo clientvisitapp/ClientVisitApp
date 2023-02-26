@@ -69,7 +69,7 @@ const AgendaScreen: React.FC = () => {
           );
         })}
       </ScrollView>
-      <ScrollView style={{marginVertical: 16}}>
+      <ScrollView style={{marginVertical: 16, paddingVertical: 7}}>
         {agendas[clickedIndex]?.agendaDetails?.map((item, index) => {
           return (
             <ActivityCard

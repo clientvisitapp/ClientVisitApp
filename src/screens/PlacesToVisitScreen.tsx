@@ -4,6 +4,7 @@ import Colors from '../constants/Colors';
 import PlacesToVisitScreenCard from '../components/PlacesToVisitScreenCard';
 import {
   ActivityIndicator,
+  FlatList,
   Image,
   ScrollView,
   StyleSheet,
@@ -23,8 +24,21 @@ import {placesToVisitType} from '../types';
 const {GREY, WHITE, BLUE} = Colors;
 
 const PlacesToVisitScreen: React.FC = () => {
-  const {headingStyle, text, iconStyle, chennaiText} = styles;
-  const {CHENNAI, PLACESTOVISIT} = Strings;
+  const {headingStyle, text} = styles;
+  const ChennaiListHeader = () => {
+    return (
+      <View style={headingStyle}>
+        <Text style={text}>{placesToVisitDetails[0]?.location}</Text>
+      </View>
+    );
+  };
+  const KochiListHeader = () => {
+    return (
+      <View style={headingStyle}>
+        <Text style={text}>{placesToVisitDetails[1]?.location}</Text>
+      </View>
+    );
+  };
   const dispatch = useDispatch<AppDispatch>();
   const {
     loader,
@@ -51,40 +65,44 @@ const PlacesToVisitScreen: React.FC = () => {
   }
 
   return (
-    <View style={{backgroundColor: WHITE}}>
+    <View style={{backgroundColor: WHITE, paddingBottom: 16}}>
       <ScrollView>
         <Image
-          source={{
-            uri: 'https://coestaticcontent.blob.core.windows.net/visit/chennai.jpg',
-          }}
-          style={{height: 159}}
+          source={require('../assets/PlacesToVisitScreenHeaderImage.png')}
+          style={{width: '100%', height: 120}}
         />
-        <View style={headingStyle}>
-          <Text style={text}>Chennai</Text>
-        </View>
-        {placesToVisitDetails[0]?.placeDetails?.map((item, index) => {
-          return (
-            <PlacesToVisitScreenCard
-              key={index}
-              imageSource={item.imageSource}
-              siteSource={item.siteSource}
-              attraction={item.attraction}
-            />
-          );
-        })}
-        <View style={headingStyle}>
-          <Text style={text}>Kochi</Text>
-        </View>
-        {placesToVisitDetails[1]?.placeDetails?.map((item, index) => {
-          return (
-            <PlacesToVisitScreenCard
-              key={index}
-              imageSource={item.imageSource}
-              siteSource={item.siteSource}
-              attraction={item.attraction}
-            />
-          );
-        })}
+        <FlatList
+          data={placesToVisitDetails[0]?.placeDetails}
+          numColumns={2}
+          scrollEnabled={false}
+          ListHeaderComponent={ChennaiListHeader}
+          renderItem={({item, index}) => {
+            return (
+              <PlacesToVisitScreenCard
+                key={index}
+                imageSource={item.imageSource}
+                siteSource={item.siteSource}
+                attraction={item.attraction}
+              />
+            );
+          }}
+        />
+        <FlatList
+          data={placesToVisitDetails[1]?.placeDetails}
+          numColumns={2}
+          scrollEnabled={false}
+          ListHeaderComponent={KochiListHeader}
+          renderItem={({item, index}) => {
+            return (
+              <PlacesToVisitScreenCard
+                key={index}
+                imageSource={item.imageSource}
+                siteSource={item.siteSource}
+                attraction={item.attraction}
+              />
+            );
+          }}
+        />
       </ScrollView>
     </View>
   );
@@ -93,7 +111,8 @@ const PlacesToVisitScreen: React.FC = () => {
 const styles = StyleSheet.create({
   headingStyle: {
     height: 52,
-    padding: 16,
+    paddingHorizontal: 16,
+    paddingTop: 25,
     fontWeight: '700',
     fontSize: 16,
     lineHeight: 20,
