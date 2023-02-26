@@ -117,6 +117,12 @@ android {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
+        release {
+            storeFile file('Odyssey.keystore')
+            storePassword 'Alias - AND'
+            keyAlias 'bbyctdc'
+            keyPassword 'Alias - AND'
+        }
     }
     buildTypes {
         debug {
