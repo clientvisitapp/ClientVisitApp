@@ -98,6 +98,7 @@ const styles = StyleSheet.create({
     marginBottom: 16,
     fontWeight: '400',
     fontSize: 14,
+    textDecorationLine: 'underline',
   },
 });
 
