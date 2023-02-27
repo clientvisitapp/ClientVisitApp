@@ -5,7 +5,7 @@ import Strings from '../constants/Strings';
 import HomeScreen from '../screens/HomeScreen';
 import AgendaScreen from '../screens/AgendaScreen';
 import PlacesToVisitScreen from '../screens/PlacesToVisitScreen';
-import ContactScreen from '../screens/ContactScreen';
+import CardsScreen from '../screens/CardsScreen';
 import Colors from '../constants/Colors';
 import BackIcon from '../assets/icons/BackIcon';
 import {StyleSheet, Text, TouchableOpacity} from 'react-native';
@@ -26,11 +26,13 @@ const {
   ROUTE_CONTACT,
   ROUTE_HOME,
   ROUTE_PLACESTOVISIT,
+  ROUTE_VISITORS,
   ROUTE_AGENDA,
   AGENDA,
   PLACESTOVISIT,
   CONTACTS,
   SIGN_OUT,
+  VISITORS,
 } = Strings;
 
 const AppStack: React.FC = () => {
@@ -106,8 +108,13 @@ const AppStack: React.FC = () => {
         options={{headerTitle: PLACESTOVISIT, headerTitleAlign: 'center'}}
       />
       <Screen
+        name={ROUTE_VISITORS}
+        component={CardsScreen}
+        options={{headerTitle: VISITORS, headerTitleAlign: 'center'}}
+      />
+      <Screen
         name={ROUTE_CONTACT}
-        component={ContactScreen}
+        component={CardsScreen}
         options={{headerTitle: CONTACTS, headerTitleAlign: 'center'}}
       />
     </Navigator>

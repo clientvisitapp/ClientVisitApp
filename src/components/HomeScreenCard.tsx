@@ -13,6 +13,7 @@ import {
 import Colors from '../constants/Colors';
 import Strings from '../constants/Strings';
 import ContactIcon from '../assets/icons/ContactIcon';
+import VisitorsIcon from '../assets/icons/VisitorsIcon';
 
 type HomeScreenCardProps = {
   title: string;
@@ -26,7 +27,20 @@ const HomeScreenCard: React.FC<HomeScreenCardProps> = ({
   onPress,
 }) => {
   const {heading, iconStyle, text} = styles;
-  const {AGENDA, PLACESTOVISIT} = Strings;
+  const {AGENDA, PLACESTOVISIT, CONTACTS, VISITORS} = Strings;
+
+  const renderIcon = () => {
+    switch (title) {
+      case AGENDA:
+        return <AgendaIcon style={iconStyle} />;
+      case PLACESTOVISIT:
+        return <PlacesToVisitIcon style={iconStyle} />;
+      case CONTACTS:
+        return <ContactIcon style={iconStyle} />;
+      case VISITORS:
+        return <VisitorsIcon style={iconStyle} />;
+    }
+  };
 
   return (
     <TouchableOpacity onPress={onPress}>
@@ -41,13 +55,7 @@ const HomeScreenCard: React.FC<HomeScreenCardProps> = ({
             },
           }),
         ]}>
-        {title === AGENDA ? (
-          <AgendaIcon style={iconStyle} />
-        ) : title === PLACESTOVISIT ? (
-          <PlacesToVisitIcon style={iconStyle} />
-        ) : (
-          <ContactIcon style={iconStyle} />
-        )}
+        {renderIcon()}
         <Text style={text}>{title}</Text>
       </View>
     </TouchableOpacity>

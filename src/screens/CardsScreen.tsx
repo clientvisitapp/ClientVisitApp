@@ -1,3 +1,4 @@
+import {useRoute} from '@react-navigation/native';
 import React, {useEffect} from 'react';
 import {
   ActivityIndicator,
@@ -8,25 +9,35 @@ import {
 } from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import ContactScreenCard from '../components/ContactScreenCard';
+import VisitorsCard from '../components/VisitorsCard';
 import Colors from '../constants/Colors';
+import Strings from '../constants/Strings';
 import {getContacts} from '../redux/slices/contactsSlice';
+import {getVisitors} from '../redux/slices/visitorsSlice';
 import {AppDispatch} from '../redux/store';
 import {contactsType} from '../types';
 
 const {BLUE, WHITE} = Colors;
 
 const ContactScreen: React.FC = () => {
+  const {ROUTE_CONTACT} = Strings;
+  const route = useRoute();
   const dispatch = useDispatch<AppDispatch>();
-  const {loader, contact} = useSelector(
+  const {
+    loader,
+    contact: {contacts},
+    visitor: {visitors},
+  } = useSelector(
     (state: {
       loader: {isLoading: boolean};
       contact: {contacts: contactsType[]};
+      visitor: {visitors: contactsType[]};
     }) => state,
   );
-  const {contacts} = contact;
+  const isContactScreen = route?.name === ROUTE_CONTACT;
 
   useEffect(() => {
-    dispatch(getContacts());
+    isContactScreen ? dispatch(getContacts()) : dispatch(getVisitors());
   }, []);
 
   if (loader?.isLoading) {
@@ -46,17 +57,29 @@ const ContactScreen: React.FC = () => {
           style={styles.headerImage}
           source={require('../assets/HomeScreenHeaderImage.png')}
         />
-        {contacts?.map((item, index) => {
-          return (
-            <ContactScreenCard
-              key={index}
-              imageSource={item.imageSource}
-              nameText={item.name}
-              phoneText={item.phone}
-              mailText={item.email}
-            />
-          );
-        })}
+        {isContactScreen
+          ? contacts?.map((item, index) => {
+              return (
+                <ContactScreenCard
+                  key={index}
+                  imageSource={item.imageSource}
+                  nameText={item.name}
+                  phoneText={item.phone}
+                  mailText={item.email}
+                />
+              );
+            })
+          : visitors?.map((item, index) => {
+              return (
+                <VisitorsCard
+                  key={index}
+                  imageSource={item.imageSource}
+                  nameText={item.name}
+                  phoneText={item.phone}
+                  mailText={item.email}
+                />
+              );
+            })}
       </ScrollView>
     </View>
   );
