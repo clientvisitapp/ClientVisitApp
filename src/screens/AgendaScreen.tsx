@@ -25,16 +25,18 @@ const AgendaScreen: React.FC = () => {
     (state: {agenda: {agendas: agendaType}; loader: {isLoading: boolean}}) =>
       state,
   );
+  const [clickedIndex, setClickedIndex] = useState(0);
   const currentDate = new Date().getDate();
-  let currentDateIndex = 0;
-  agendas?.forEach((item, index) => {
-    item?.date?.substring(3, 5) === currentDate && (currentDateIndex = index);
-  });
-  const [clickedIndex, setClickedIndex] = useState(currentDateIndex);
 
   useEffect(() => {
     dispatch(getAgenda());
   }, []);
+
+  useEffect(() => {
+    agendas?.forEach((item, index) => {
+      item?.date?.substring(3, 5) === currentDate && setClickedIndex(index);
+    });
+  }, [agendas]);
 
   if (isLoading) {
     return (
