@@ -18,6 +18,7 @@ import {getAgenda} from '../redux/slices/agendaSlice';
 import {getContacts} from '../redux/slices/contactsSlice';
 import RefreshIcon from '../assets/icons/RefreshIcon';
 import SignOutIcon from '../assets/icons/SignOutIcon';
+import {getVisitors} from '../redux/slices/visitorsSlice';
 
 const Stack = createNativeStackNavigator();
 const {Navigator, Screen} = Stack;
@@ -72,6 +73,13 @@ const AppStack: React.FC = () => {
       case ROUTE_CONTACT:
         return (
           <TouchableOpacity onPress={() => dispatch(getContacts())}>
+            <RefreshIcon />
+          </TouchableOpacity>
+        );
+
+      case ROUTE_VISITORS:
+        return (
+          <TouchableOpacity onPress={() => dispatch(getVisitors())}>
             <RefreshIcon />
           </TouchableOpacity>
         );

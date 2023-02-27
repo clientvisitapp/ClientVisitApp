@@ -30,10 +30,14 @@ const VisitorsCard: React.FC<VisitorsCardProps> = ({
           },
         }),
       ]}>
-      <Image source={{uri: imageSource}} style={DPIconImage} />
+      <Image
+        source={{uri: imageSource}}
+        style={DPIconImage}
+        defaultSource={require('../assets/ContactsPlaceholder.png')}
+      />
       <View style={detailsCard}>
-        <Text style={nameTextStyle}>Gokul</Text>
-        <Text style={designationTextStyle}>Chief Executive Officer</Text>
+        <Text style={nameTextStyle}>{nameText}</Text>
+        <Text style={designationTextStyle}>{designationText}</Text>
       </View>
     </View>
   );

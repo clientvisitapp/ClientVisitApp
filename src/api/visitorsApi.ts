@@ -2,7 +2,7 @@ const visitorsRequest = () =>
   new Promise(async (resolve, reject) => {
     try {
       const response = await fetch(
-        'https://bbyvisit1.azurewebsites.net/visit/v1/contacts',
+        'https://bbyvisit1.azurewebsites.net/visit/v1/visitors',
       );
       if (response.status === 200) {
         const data = await response.json();

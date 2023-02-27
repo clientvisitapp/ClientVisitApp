@@ -15,7 +15,7 @@ import Strings from '../constants/Strings';
 import {getContacts} from '../redux/slices/contactsSlice';
 import {getVisitors} from '../redux/slices/visitorsSlice';
 import {AppDispatch} from '../redux/store';
-import {contactsType} from '../types';
+import {contactsType, visitorsType} from '../types';
 
 const {BLUE, WHITE} = Colors;
 
@@ -31,7 +31,7 @@ const ContactScreen: React.FC = () => {
     (state: {
       loader: {isLoading: boolean};
       contact: {contacts: contactsType[]};
-      visitor: {visitors: contactsType[]};
+      visitor: {visitors: visitorsType[]};
     }) => state,
   );
   const isContactScreen = route?.name === ROUTE_CONTACT;
@@ -75,8 +75,7 @@ const ContactScreen: React.FC = () => {
                   key={index}
                   imageSource={item.imageSource}
                   nameText={item.name}
-                  phoneText={item.phone}
-                  mailText={item.email}
+                  designationText={item.designation}
                 />
               );
             })}

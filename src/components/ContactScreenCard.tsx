@@ -50,7 +50,11 @@ const ContactScreenCard: React.FC<ContactScreenProps> = ({
           onPress={() => Linking.openURL(`tel:${phoneText}`)}>
           {phoneText}
         </Text>
-        <Text style={mailTextStyle}>{mailText}</Text>
+        <Text
+          style={mailTextStyle}
+          onPress={() => Linking.openURL(`mailto:${mailText}`)}>
+          {mailText}
+        </Text>
       </View>
     </View>
   );

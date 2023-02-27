@@ -47,3 +47,9 @@ export type contactsType = {
   phone: string;
   email: string;
 };
+
+export type visitorsType = {
+  imageSource: string;
+  name: string;
+  designation: string;
+};

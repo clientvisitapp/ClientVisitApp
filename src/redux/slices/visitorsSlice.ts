@@ -1,12 +1,10 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
-import {contactRequest} from '../../api/contactApi';
-import {placesToVisitRequest} from '../../api/placesToVisitApi';
 import {visitorsRequest} from '../../api/visitorsApi';
-import {placesToVisit, formattedPlacesToVisit, contactsType} from '../../types';
+import {visitorsType} from '../../types';
 import {completed, inProgress} from './loaderSlice';
 
 type InitialState = {
-  visitors: contactsType[];
+  visitors: visitorsType[];
 };
 
 const initialState: InitialState = {
@@ -35,13 +33,12 @@ const visitorsSlice = createSlice({
   extraReducers(builder) {
     builder
       .addCase(getVisitors.fulfilled, (state, action) => {
-        const contactsResult = action?.payload?.map(item => ({
+        const visitorsResult = action?.payload?.map(item => ({
           imageSource: item.imageUrl,
           name: item.name,
-          phone: item.phoneNumber,
-          email: item.emailID,
+          designation: item.designation,
         }));
-        state.visitors = contactsResult;
+        state.visitors = visitorsResult;
         console.log(action.payload, 'from fulfilled', state.visitors);
       })
       .addCase(getVisitors.rejected, (state, action) => {
