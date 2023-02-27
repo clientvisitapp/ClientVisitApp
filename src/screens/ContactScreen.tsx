@@ -65,7 +65,7 @@ const ContactScreen: React.FC = () => {
 const styles = StyleSheet.create({
   headerImage: {
     width: '100%',
-    height: 195,
+    height: 118,
   },
 });
 

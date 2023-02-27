@@ -37,12 +37,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({navigation}) => {
         style={headerImage}
         source={require('../assets/HomeScreenHeaderImage.png')}
       />
-      <View style={header}>
-        <Text style={text}>
-          {GREETER}
-          <Text style={{color: BLUE}}>{TCS}</Text> {LOCATIONS}
-        </Text>
-      </View>
+      <Text style={text}>{GREETER}</Text>
       <HomeScreenCard
         title={AGENDA}
         imageSource={{
@@ -71,17 +66,22 @@ const HomeScreen: React.FC<HomeScreenProps> = ({navigation}) => {
 const styles = StyleSheet.create({
   headerImage: {
     width: '100%',
-    height: 195,
+    height: 118,
   },
-  header: {
-    marginLeft: 16,
-    marginTop: 32,
-    marginBottom: 12,
-  },
+  // header: {
+  //   marginLeft: 16,
+  //   marginTop: 32,
+  //   marginBottom: 12,
+  // },
   text: {
-    fontWeight: '700',
-    fontSize: 32,
-    lineHeight: 44,
+    marginHorizontal: 16,
+    marginTop: 24,
+    marginBottom: 12,
+    height: 30,
+    fontWeight: '600',
+    fontSize: 20,
+    lineHeight: 30,
+    alignSelf: 'center',
   },
 });
 

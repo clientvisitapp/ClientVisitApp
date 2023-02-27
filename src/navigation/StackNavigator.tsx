@@ -16,6 +16,8 @@ import {clearAuthData} from '../redux/slices/authSlice';
 import SignInScreen from '../screens/SignInScreen';
 import {getAgenda} from '../redux/slices/agendaSlice';
 import {getContacts} from '../redux/slices/contactsSlice';
+import RefreshIcon from '../assets/icons/RefreshIcon';
+import SignOutIcon from '../assets/icons/SignOutIcon';
 
 const Stack = createNativeStackNavigator();
 const {Navigator, Screen} = Stack;
@@ -32,7 +34,6 @@ const {
 } = Strings;
 
 const AppStack: React.FC = () => {
-  const {headerRightStyle} = styles;
   const dispatch = useDispatch<AppDispatch>();
 
   const headerLeft = (navigation: any) => (
@@ -54,26 +55,22 @@ const AppStack: React.FC = () => {
     switch (route.name) {
       case ROUTE_HOME:
         return (
-          <TouchableOpacity style={headerRightStyle} onPress={() => signOut()}>
-            <Text style={{color: WHITE, fontWeight: '500'}}>{SIGN_OUT}</Text>
+          <TouchableOpacity onPress={() => signOut()}>
+            <SignOutIcon />
           </TouchableOpacity>
         );
 
       case ROUTE_AGENDA:
         return (
-          <TouchableOpacity
-            style={headerRightStyle}
-            onPress={() => dispatch(getAgenda())}>
-            <Text style={{color: WHITE, fontWeight: '500'}}>Refresh</Text>
+          <TouchableOpacity onPress={() => dispatch(getAgenda())}>
+            <RefreshIcon />
           </TouchableOpacity>
         );
 
       case ROUTE_CONTACT:
         return (
-          <TouchableOpacity
-            style={headerRightStyle}
-            onPress={() => dispatch(getContacts())}>
-            <Text style={{color: WHITE, fontWeight: '500'}}>Refresh</Text>
+          <TouchableOpacity onPress={() => dispatch(getContacts())}>
+            <RefreshIcon />
           </TouchableOpacity>
         );
 
@@ -133,9 +130,5 @@ const LoginStack: React.FC = () => {
     </Navigator>
   );
 };
-
-const styles = StyleSheet.create({
-  headerRightStyle: {height: 20, width: 60, marginRight: 10},
-});
 
 export {AppStack, LoginStack};

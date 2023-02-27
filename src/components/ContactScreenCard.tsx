@@ -38,7 +38,11 @@ const ContactScreenCard: React.FC<ContactScreenProps> = ({
           },
         }),
       ]}>
-      <Image source={{uri: imageSource}} style={DPIconImage} />
+      <Image
+        source={{uri: imageSource}}
+        defaultSource={require('../assets/ContactsPlaceholder.png')}
+        style={DPIconImage}
+      />
       <View style={detailsCard}>
         <Text style={nameTextStyle}>{nameText}</Text>
         <Text

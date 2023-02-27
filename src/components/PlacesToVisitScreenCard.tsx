@@ -48,7 +48,7 @@ const PlacesToVisitScreenCard: React.FC<PlacesToVisitScreenCardProps> = ({
         <Image
           source={{uri: imageSource}}
           style={cardView}
-          defaultSource={require('../assets/PlacesPlaceholder.png')}
+          defaultSource={require('../assets/PlacesToVisitPlaceholder.png')}
         />
       </View>
       <Text style={text}>{attraction}</Text>

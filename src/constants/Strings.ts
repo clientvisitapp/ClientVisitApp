@@ -5,7 +5,7 @@ export default {
   ROUTE_CONTACT_TAB: 'ContactTab',
   ROUTE_AGENDA: 'ROUTE_AGENDA',
   ROUTE_PLACESTOVISIT: 'ROUTE_PLACESTOVISIT',
-  GREETER: 'Welcome to \n',
+  GREETER: 'Welcome to TCS',
   TCS: 'TCS',
   LOCATIONS: '- Chennai, Kochi',
   AGENDA: 'Agenda',
