@@ -20,5 +20,5 @@ export default {
   NAME: 'Name',
   PLACEHOLDER_NAME: 'User Name',
   PASSWORD: 'Password',
-  SOMETHING_WENT_WRONG: 'Sorry! something went wrong',
+  SOMETHING_WENT_WRONG: 'Sorry! Something went wrong. Please try again.',
 };

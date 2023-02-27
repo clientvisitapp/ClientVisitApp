@@ -7,24 +7,16 @@ import {CustomText as Text} from './CustomText';
 type VisitorsCardProps = {
   imageSource: string;
   nameText: string;
-  phoneText: string;
-  mailText: string;
+  designationText: string;
 };
 
 const VisitorsCard: React.FC<VisitorsCardProps> = ({
   nameText,
-  phoneText,
-  mailText,
+  designationText,
   imageSource,
 }) => {
-  const {
-    card,
-    DPIconImage,
-    detailsCard,
-    nameTextStyle,
-    phoneTextStyle,
-    mailTextStyle,
-  } = styles;
+  const {card, DPIconImage, detailsCard, nameTextStyle, designationTextStyle} =
+    styles;
   console.log('reached');
   return (
     <View
@@ -40,13 +32,8 @@ const VisitorsCard: React.FC<VisitorsCardProps> = ({
       ]}>
       <Image source={{uri: imageSource}} style={DPIconImage} />
       <View style={detailsCard}>
-        <Text style={nameTextStyle}>{nameText}</Text>
-        <Text
-          style={phoneTextStyle}
-          onPress={() => Linking.openURL(`tel:${phoneText}`)}>
-          {phoneText}
-        </Text>
-        <Text style={mailTextStyle}>{mailText}</Text>
+        <Text style={nameTextStyle}>Gokul</Text>
+        <Text style={designationTextStyle}>Chief Executive Officer</Text>
       </View>
     </View>
   );
@@ -75,9 +62,10 @@ const styles = StyleSheet.create({
     flexShrink: 1,
   },
   nameTextStyle: {
-    marginTop: 16,
-    fontWeight: '400',
-    fontSize: 14,
+    marginTop: 20,
+    fontWeight: '700',
+    fontSize: 16,
+    lineHeight: 18,
   },
   phoneTextStyle: {
     marginVertical: 8,
@@ -86,10 +74,12 @@ const styles = StyleSheet.create({
     color: 'blue',
     textDecorationLine: 'underline',
   },
-  mailTextStyle: {
-    marginBottom: 16,
+  designationTextStyle: {
+    marginTop: 8,
+    marginBottom: 20,
     fontWeight: '400',
     fontSize: 14,
+    lineHeight: 18,
   },
 });
 
