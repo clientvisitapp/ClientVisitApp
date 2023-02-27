@@ -1,5 +1,11 @@
 import React, {useEffect} from 'react';
-import {ActivityIndicator, ScrollView, View} from 'react-native';
+import {
+  ActivityIndicator,
+  Image,
+  ScrollView,
+  View,
+  StyleSheet,
+} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import ContactScreenCard from '../components/ContactScreenCard';
 import Colors from '../constants/Colors';
@@ -36,6 +42,10 @@ const ContactScreen: React.FC = () => {
   return (
     <View style={{backgroundColor: WHITE, flex: 1}}>
       <ScrollView>
+        <Image
+          style={styles.headerImage}
+          source={require('../assets/HomeScreenHeaderImage.png')}
+        />
         {contacts?.map((item, index) => {
           return (
             <ContactScreenCard
@@ -51,5 +61,12 @@ const ContactScreen: React.FC = () => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  headerImage: {
+    width: '100%',
+    height: 195,
+  },
+});
 
 export default ContactScreen;

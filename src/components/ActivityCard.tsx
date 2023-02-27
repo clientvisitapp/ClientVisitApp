@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
   },
   activityText: {
     fontWeight: '700',
-    fontSize: 16,
+    fontSize: 20,
     marginLeft: 16,
     // marginTop: 8,
   },
