@@ -18,10 +18,10 @@ const androidStyle = {
   elevation: 5,
 };
 const iosStyle = {
-  shadowColor: '#171717',
-  shadowOpacity: 0.2,
-  shadowOffset: {width: 0 - 0, height: 0 - 0},
-  shadowRadius: 3,
+  // shadowColor: '#171717',
+  // shadowOpacity: 0.2,
+  // shadowOffset: {width: 0 - 0, height: 0 - 0},
+  // shadowRadius: 3,
 };
 
 const ActivityCard: React.FC<ActivityProps> = ({
@@ -56,8 +56,8 @@ const styles = StyleSheet.create({
     padding: 16,
     paddingHorizontal: 10,
     gap: 8,
-    marginHorizontal: 14,
-    marginBottom: 16,
+    // marginHorizontal: 14,
+    marginBottom: 8,
   },
   activityText: {
     fontWeight: '700',

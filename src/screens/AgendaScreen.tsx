@@ -55,7 +55,11 @@ const AgendaScreen: React.FC = () => {
         flex: 1,
       }}>
       <ScrollView
-        style={{flexDirection: 'row', alignSelf: 'center'}}
+        style={{
+          flexDirection: 'row',
+          alignSelf: 'center',
+          backgroundColor: Colors.WHITE,
+        }}
         horizontal={true}
         showsHorizontalScrollIndicator={false}>
         {agendas?.map((item, index) => {
@@ -70,7 +74,12 @@ const AgendaScreen: React.FC = () => {
           );
         })}
       </ScrollView>
-      <ScrollView style={{marginVertical: 16, paddingVertical: 7}}>
+      <ScrollView
+        style={{
+          backgroundColor: Colors.WHITE,
+          paddingVertical: 4,
+        }}
+        contentContainerStyle={{backgroundColor: Colors.LIGHTGREY}}>
         {agendas[clickedIndex]?.agendaDetails?.map((item, index) => {
           return (
             <ActivityCard

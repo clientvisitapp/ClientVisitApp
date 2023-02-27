@@ -57,6 +57,7 @@ const AgendaScreenCard: React.FC<AgendaProps> = ({
       style={[
         index === clickedIndex ? btnPress : btnNormal,
         Platform.OS === 'android' ? androidStyle : iosStyle,
+        {marginBottom: 25},
       ]}
       onPress={() => {
         setClickedIndex(index);
@@ -92,7 +93,7 @@ const styles = StyleSheet.create({
     width: 100,
     marginTop: 16,
     marginHorizontal: 14,
-    marginBottom: 21,
+    marginBottom: 15,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -102,7 +103,7 @@ const styles = StyleSheet.create({
     height: 48,
     width: 100,
     marginTop: 16,
-    marginBottom: 21,
+    marginBottom: 15,
     marginHorizontal: 14,
     alignItems: 'center',
     justifyContent: 'center',
