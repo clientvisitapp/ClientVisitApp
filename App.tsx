@@ -6,6 +6,7 @@
  */
 
 import React, {useState} from 'react';
+import {StatusBar} from 'react-native';
 import {Provider} from 'react-redux';
 import RootNavigator from './src/navigation/RootNavigator';
 import store from './src/redux/store';
@@ -15,6 +16,7 @@ import SplashScreen from './src/screens/SplashScreen';
 function App(): JSX.Element {
   return (
     <Provider store={store}>
+      <StatusBar barStyle={'light-content'} />
       <RootNavigator />
     </Provider>
   );
