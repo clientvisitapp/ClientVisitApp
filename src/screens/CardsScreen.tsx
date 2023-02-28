@@ -55,7 +55,7 @@ const ContactScreen: React.FC = () => {
       <ScrollView>
         <Image
           style={styles.headerImage}
-          source={require('../assets/HomeScreenHeaderImage.png')}
+          source={require('../assets/HomeScreenHeader.png')}
         />
         {isContactScreen
           ? contacts?.map((item, index) => {
@@ -87,7 +87,7 @@ const ContactScreen: React.FC = () => {
 const styles = StyleSheet.create({
   headerImage: {
     width: '100%',
-    height: 118,
+    height: 181,
   },
 });
 

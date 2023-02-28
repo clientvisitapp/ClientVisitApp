@@ -30,16 +30,15 @@ const HomeScreen: React.FC<HomeScreenProps> = ({navigation}) => {
     CONTACTS,
     VISITORS,
   } = Strings;
-  const {headerImage, header, text} = styles;
+  const {headerImage, text} = styles;
   const dispatch = useDispatch<AppDispatch>();
 
   return (
     <ScrollView style={{backgroundColor: WHITE, flex: 1}}>
       <Image
         style={headerImage}
-        source={require('../assets/HomeScreenHeaderImage.png')}
+        source={require('../assets/HomeScreenHeader.png')}
       />
-      <Text style={text}>{GREETER}</Text>
       <HomeScreenCard
         title={AGENDA}
         imageSource={{
@@ -48,18 +47,18 @@ const HomeScreen: React.FC<HomeScreenProps> = ({navigation}) => {
         onPress={() => navigation.navigate(ROUTE_AGENDA)}
       />
       <HomeScreenCard
-        title={PLACESTOVISIT}
-        imageSource={{
-          uri: 'https://coestaticcontent.blob.core.windows.net/visit/chennai.jpg',
-        }}
-        onPress={() => navigation.navigate(ROUTE_PLACESTOVISIT)}
-      />
-      <HomeScreenCard
         title={VISITORS}
         imageSource={{
           uri: 'https://coestaticcontent.blob.core.windows.net/visit/chennai.jpg',
         }}
         onPress={() => navigation.navigate(ROUTE_VISITORS)}
+      />
+      <HomeScreenCard
+        title={PLACESTOVISIT}
+        imageSource={{
+          uri: 'https://coestaticcontent.blob.core.windows.net/visit/chennai.jpg',
+        }}
+        onPress={() => navigation.navigate(ROUTE_PLACESTOVISIT)}
       />
       <HomeScreenCard
         title={CONTACTS}
@@ -75,13 +74,9 @@ const HomeScreen: React.FC<HomeScreenProps> = ({navigation}) => {
 const styles = StyleSheet.create({
   headerImage: {
     width: '100%',
-    height: 118,
+    height: 181,
+    marginBottom: 12,
   },
-  // header: {
-  //   marginLeft: 16,
-  //   marginTop: 32,
-  //   marginBottom: 12,
-  // },
   text: {
     marginHorizontal: 16,
     marginTop: 24,

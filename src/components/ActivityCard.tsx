@@ -42,8 +42,6 @@ const ActivityCard: React.FC<ActivityProps> = ({
       {header ? <Text style={activityText}>{header}</Text> : null}
       {time ? <Text style={timeText}>{time}</Text> : null}
       {description ? <Text style={generalText}>{description}</Text> : null}
-      {location ? <Text style={generalText}>{location}</Text> : null}
-      {team ? <Text style={generalText}>{team}</Text> : null}
     </View>
   );
 };
