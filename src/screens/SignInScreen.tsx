@@ -31,7 +31,7 @@ const SignInScreen = () => {
     buttonStyle,
     buttonText,
     loginHeader,
-    iconStyle,
+    headerImage,
   } = styles;
   const {NAME, PASSWORD, SOMETHING_WENT_WRONG, PLACEHOLDER_NAME, ROUTE_HOME} =
     Strings;
@@ -73,8 +73,12 @@ const SignInScreen = () => {
     <View style={loginContainer}>
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'position' : undefined}
-        style={{padding: 16, justifyContent: 'flex-end'}}>
-        <Image source={require('../assets/LoginIcon.png')} style={iconStyle} />
+        style={{paddingBottom: 16, justifyContent: 'flex-end'}}>
+        <View style={{backgroundColor: Colors.BLUE, height: 50}}></View>
+        <Image
+          source={require('../assets/HomeScreenHeader.png')}
+          style={headerImage}
+        />
         <Text style={loginHeader}>Sign In to Odyssey</Text>
         <TextInput
           style={[
@@ -128,6 +132,11 @@ const SignInScreen = () => {
 const styles = StyleSheet.create({
   loginContainer: {
     flex: 1,
+  },
+  headerImage: {
+    width: '100%',
+    height: 181,
+    marginBottom: 12,
   },
   errorText: {
     color: 'red',
